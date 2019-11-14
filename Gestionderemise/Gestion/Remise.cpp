@@ -75,6 +75,8 @@ model->setHeaderData(1, Qt::Horizontal, QObject::tr("taux"));
 model->setHeaderData(2, Qt::Horizontal, QObject::tr("ide"));
     return model;
 }
+//tekhdemch
+
 QSqlQueryModel * Remise::recherche(){
 QSqlQueryModel * model= new QSqlQueryModel();
 model->setQuery("Select * from Remise where id = :id ");
