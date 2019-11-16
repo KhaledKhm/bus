@@ -137,3 +137,11 @@ else
 
 
 }
+void MainWindow::on_stat_clicked(){
+    bool test = r.stat();
+    if (test){
+    ui->tabetudiant->setModel(r.stat());}//refresh
+    QMessageBox::information(nullptr, QObject::tr("Tri terminer"),
+    QObject::tr("Tri terminer.\n"
+    "Click Cancel to exit."), QMessageBox::Cancel);
+}
