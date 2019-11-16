@@ -85,3 +85,11 @@ model->setHeaderData(1, Qt::Horizontal, QObject::tr("taux"));
 model->setHeaderData(2, Qt::Horizontal, QObject::tr("ide"));
     return model;
 }
+QSqlQueryModel * Remise::stat(){
+QSqlQueryModel * model= new QSqlQueryModel();
+model->setQuery("Select  Max(taux) , Avg(taux) , Min(taux) from remise  ");
+model->setHeaderData(0, Qt::Horizontal, QObject::tr("Max"));
+model->setHeaderData(1, Qt::Horizontal, QObject::tr("Avg"));
+model->setHeaderData(2, Qt::Horizontal, QObject::tr("Min"));
+    return model;
+}
