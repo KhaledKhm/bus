@@ -14,6 +14,7 @@ class Remise
     QSqlQueryModel * afficher();
     //bool tri();
     QSqlQueryModel * tri();
+    QSqlQueryModel * stat();
     bool supprimer(int);
     QSqlQueryModel * recherche();
     bool modifier();
