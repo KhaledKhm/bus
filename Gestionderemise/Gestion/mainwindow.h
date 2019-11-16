@@ -30,6 +30,8 @@ private slots:
 
     void on_tri_clicked();
 
+    void on_stat_clicked();
+    
     void on_recherche_clicked();
 
 private:
