@@ -33,13 +33,13 @@ bool materiel::ajouterMateriel()
 {
     QSqlQuery query;
     QString idMaterielBD=QString::number(idMateriel);
-    QString nomMaterielBD=QString(nomMateriel);
+  //  QString nomMaterielBD=QString(nomMateriel);
     QString quantiteMaterielBD=QString::number(quantiteMateriel);
     QString prixMaterielBD=QString::number(prixMateriel);
     QString idFournisseurMaterielBD=QString::number(idFournisseurMateriel);
-    query.prepare("INSERT INTO materiel (idMateriel,nomMateriel,quantiteMateriel,prixMateriel,idFournisseurMateriel)""VALUES(':id',':nom',':quantite',':prix',':idFournisseur'");
+    query.prepare("INSERT INTO materiel VALUES(:id,:nom,:quantite,:prix,:idFournisseur)");
     query.bindValue(":id",idMaterielBD);
-    query.bindValue(":nom",nomMaterielBD);
+    query.bindValue(":nom",nomMateriel);
     query.bindValue(":quantite",quantiteMaterielBD);
     query.bindValue(":prix",prixMaterielBD);
     query.bindValue(":idFournisseur",idFournisseurMaterielBD);
@@ -67,14 +67,32 @@ bool materiel::supprimerMateriel(int id)
     return query.exec();
 }
 
-bool materiel::modifierMateriel(int idMateriel)
+bool materiel::modifierMateriel(int id)
 {
     QSqlQuery query;
-    query.prepare("UPDATE materiel SET idMateriel= :id WHERE id= :id AND SET nom= :nom WHERE idMateriel= :id AND SET quantite= :quabtite WHERE idMateriel= :id AND SET prix= :prix WHERE idMateriel= :id AND SET idFournisseur= :idFournisseur WHERE idMateriel= :id");
-    query.bindValue(":id",idMateriel);
+    query.prepare("UPDATE materiel SET  nom= :nom, quantite= :quantite, prix= :prix, idFournisseur= :idFournisseur WHERE id= :id");
+    query.bindValue(":id",id);
     query.bindValue(":nom",nomMateriel);
     query.bindValue(":quantite",quantiteMateriel);
     query.bindValue(":prix",prixMateriel);
     query.bindValue(":idFournisseur",idFournisseurMateriel);
     return query.exec();
+}
+
+
+QSqlQueryModel * materiel::recherche(){
+QSqlQueryModel * model= new QSqlQueryModel();
+model->setQuery("Select * from Remise where id = :id ");
+model->setHeaderData(0, Qt::Horizontal, QObject::tr("id"));
+model->setHeaderData(1, Qt::Horizontal, QObject::tr("taux"));
+model->setHeaderData(2, Qt::Horizontal, QObject::tr("ide"));
+    return model;
+}
+QSqlQueryModel * materiel::stat(){
+QSqlQueryModel * model= new QSqlQueryModel();
+model->setQuery("Select  Max(quantite) , Avg(quantite) , Min(quantite) from materiel  ");
+model->setHeaderData(0, Qt::Horizontal, QObject::tr("Max"));
+model->setHeaderData(1, Qt::Horizontal, QObject::tr("Avg"));
+model->setHeaderData(2, Qt::Horizontal, QObject::tr("Min"));
+    return model;
 }

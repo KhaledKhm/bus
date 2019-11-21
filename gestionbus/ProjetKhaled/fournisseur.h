@@ -15,6 +15,8 @@ public:
     bool modifierFournisseur(int);
     QSqlQueryModel * afficherFournisseur();
     bool supprimerFournisseur(int);
+   // QSqlQueryModel * stat();
+    QSqlQueryModel * recherche();
 private:
     int idFournisseur;
     QString nomFournisseur;

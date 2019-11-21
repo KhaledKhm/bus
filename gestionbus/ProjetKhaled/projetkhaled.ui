@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -586,6 +586,19 @@
          </rect>
         </property>
        </widget>
+       <widget class="QPushButton" name="pbBusAfficher">
+        <property name="geometry">
+         <rect>
+          <x>200</x>
+          <y>450</y>
+          <width>93</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Afficher</string>
+        </property>
+       </widget>
       </widget>
      </widget>
     </widget>
@@ -708,7 +721,7 @@
          <string>ID de fournisseur</string>
         </property>
        </widget>
-       <widget class="QLineEdit" name="LEIDFournisseurModif2_4">
+       <widget class="QLineEdit" name="LEIDFournisseurModif2_2">
         <property name="geometry">
          <rect>
           <x>210</x>
@@ -840,6 +853,19 @@
           <width>641</width>
           <height>421</height>
          </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pbFournisseurAfficher">
+        <property name="geometry">
+         <rect>
+          <x>280</x>
+          <y>450</y>
+          <width>93</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Afficher</string>
         </property>
        </widget>
       </widget>
@@ -1308,6 +1334,19 @@
           <width>641</width>
           <height>421</height>
          </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pbMaterielAfficher">
+        <property name="geometry">
+         <rect>
+          <x>170</x>
+          <y>440</y>
+          <width>93</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Afficher</string>
         </property>
        </widget>
       </widget>

@@ -73,7 +73,7 @@ QSqlQueryModel * bus::afficher()
 {
     QSqlQueryModel *model = new QSqlQueryModel();
     model->setQuery("select * from bus");
-    model->setHeaderData(0,Qt::Horizontal,QObject::tr("ID"));
+    model->setHeaderData(0,Qt::Horizontal,QObject::tr("IMMATRICULE"));
     model->setHeaderData(1,Qt::Horizontal,QObject::tr("NBPLACE"));
     model->setHeaderData(2,Qt::Horizontal,QObject::tr("DESTINATION"));
     model->setHeaderData(3,Qt::Horizontal,QObject::tr("IDFOURNISSEUR"));
@@ -82,6 +82,7 @@ QSqlQueryModel * bus::afficher()
     model->setHeaderData(6,Qt::Horizontal,QObject::tr("CINAGENT"));
     return model;
 }
+/*
 bool bus::rechercher(int id){
     QSqlQuery query;
     int count=0;
@@ -93,8 +94,8 @@ bool bus::rechercher(int id){
             count++;
         if(count>=1)
             test=1;
-    }
-}
+    }return id;
+}*/
 bool bus::supprimer(int id)
 {
     QSqlQuery query;
@@ -107,10 +108,11 @@ bool bus::supprimer(int id)
 bool bus::modifier(int id)
 {
     QSqlQuery query;
-    query.prepare("UPDATE bus SET nbPlace= :nbPlace, destination= :destination, SET idTrajet= :idTrajet, SET idPlace= :idPlace, SET cinAgent= :cinAgent WHERE id= :id");
+    query.prepare("UPDATE bus SET nbPlace= :nbPlace, destination= :destination,  idTrajet= :idTrajet,  idPlace= :idPlace, cin= :cin WHERE id= :id");
     query.bindValue(":id",id);
     query.bindValue(":nbPlace",nbPlace);
     query.bindValue(":destination",destination);
+   // query.bindValue(":idFournisseur",idFournisseur);
     query.bindValue(":idTrajet",idTrajet);
     query.bindValue(":idPlace",idPlace);
     query.bindValue(":cinAgent",cinAgent);

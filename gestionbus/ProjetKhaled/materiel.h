@@ -15,6 +15,8 @@ public:
     bool modifierMateriel(int);
     QSqlQueryModel * afficherMateriel();
     bool supprimerMateriel(int);
+    QSqlQueryModel * stat();
+    QSqlQueryModel * recherche();
 private:
     int idMateriel;
     QString nomMateriel;

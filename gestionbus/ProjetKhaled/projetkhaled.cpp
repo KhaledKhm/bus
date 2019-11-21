@@ -17,6 +17,7 @@ ProjetKhaled::ProjetKhaled(QWidget *parent)
 
 }
 
+
 ProjetKhaled::~ProjetKhaled()
 {
     delete ui;
@@ -71,7 +72,7 @@ QMessageBox::information(nullptr, QObject::tr("Modifier un bus"),
 }
   else
       QMessageBox::critical(nullptr, QObject::tr("Modifier un bus"),
-                  QObject::tr("Erreur !.\n"
+                  QObject::tr("Erreur !\n"
                               "Click Cancel to exit."), QMessageBox::Cancel);
 
 }
@@ -80,12 +81,26 @@ void ProjetKhaled::on_pb_supprimer_clicked()
 {
     int Immatricule=ui->LEImmatriculeSupprimer->text().toInt();
     bool test=tmpBus.supprimer(Immatricule);
-      if (test)
+      if (test){
          ui->tabBus->setModel(tmpBus.afficher());
+         qDebug()<<"bus supprimer";
+     QMessageBox::information(nullptr, QObject::tr("Supprimer un bus"),
+                       QObject::tr("Bus supprime.\n"
+                                   "Click Cancel to exit."), QMessageBox::Cancel);
+
+     }
+       else
+           QMessageBox::critical(nullptr, QObject::tr("Supprimer un bus"),
+                       QObject::tr("Erreur !\n"
+                                   "Click Cancel to exit."), QMessageBox::Cancel);
 
 }
 
 
+void ProjetKhaled::on_pbBusAfficher_clicked()
+{
+    ui->tabBus->setModel(tmpBus.afficher());
+}
 
 
 void ProjetKhaled::on_pbAjouterFournisseur_clicked()
@@ -94,7 +109,16 @@ void ProjetKhaled::on_pbAjouterFournisseur_clicked()
     QString nomFournisseur=ui->LENomFournisseur->text();
     fournisseur f(idFournisseur,nomFournisseur);
     bool test=f.ajouterFournisseur();
-    if (test) qDebug()<<"fournisseur ajoute";
+    if (test) {qDebug()<<"fournisseur ajoute";
+        QMessageBox::information(nullptr, QObject::tr("Ajouter un fournisseur"),
+                          QObject::tr("Fournisseur ajoute\n"
+                                      "Click Cancel to exit."), QMessageBox::Cancel);
+
+        }
+          else
+              QMessageBox::critical(nullptr, QObject::tr("Ajouter un fournisseur"),
+                          QObject::tr("Erreur !\n"
+                                      "Click Cancel to exit."), QMessageBox::Cancel);
 }
 
 
@@ -102,19 +126,43 @@ void ProjetKhaled::on_pbAjouterFournisseur_clicked()
 
 void ProjetKhaled::on_pbModifierFournisseur_clicked()
 {
-    int idFournisseur=ui->LEIDAjoutFournisseur->text().toInt();
-    QString nomFournisseur=ui->LENomFournisseur->text();
+    int idFournisseur=ui->LEIDFournisseurModif2_2->text().toInt();
+    QString nomFournisseur=ui->LENomFournisseurModif2->text();
     fournisseur f(idFournisseur,nomFournisseur);
     bool test=f.modifierFournisseur(idFournisseur);
-    if (test) ui->tabFournisseur->setModel(tmpFournisseur.afficherFournisseur());
+    if (test) { ui->tabFournisseur->setModel(tmpFournisseur.afficherFournisseur());
+        QMessageBox::information(nullptr, QObject::tr("Modifier un fournisseur"),
+                          QObject::tr("Fournisseur modifie.\n"
+                                      "Click Cancel to exit."), QMessageBox::Cancel);
+
+        }
+          else
+              QMessageBox::critical(nullptr, QObject::tr("Modifier un fournisseur"),
+                          QObject::tr("Erreur !\n"
+                                      "Click Cancel to exit."), QMessageBox::Cancel);
 }
 
 void ProjetKhaled::on_pbSupprimerFournisseur_clicked()
 {
     int idFournisseur=ui->LEIDFournisseurSupprimer->text().toInt();
     bool test=tmpFournisseur.supprimerFournisseur(idFournisseur);
-      if (test)
+      if (test){
          ui->tabFournisseur->setModel(tmpFournisseur.afficherFournisseur());
+         qDebug()<<"Fournisseur supprime";
+     QMessageBox::information(nullptr, QObject::tr("Supprimer un fournisseur"),
+                       QObject::tr("Fournisseur supprime.\n"
+                                   "Click Cancel to exit."), QMessageBox::Cancel);
+
+     }
+       else
+           QMessageBox::critical(nullptr, QObject::tr("Supprimer un fournisseur"),
+                       QObject::tr("Erreur !\n"
+                                   "Click Cancel to exit."), QMessageBox::Cancel);
+}
+
+void ProjetKhaled::on_pbFournisseurAfficher_clicked()
+{
+     ui->tabFournisseur->setModel(tmpFournisseur.afficherFournisseur());
 }
 
 
@@ -128,7 +176,16 @@ void ProjetKhaled::on_pbMaterielAjout_clicked()
     int idFournisseur=ui->LEIDFournisseurMaterielAjout->text().toInt();
     materiel mat(id,nom,quantite,prix,idFournisseur);
     bool test=mat.ajouterMateriel();
-    if (test) qDebug()<<"materiel ajoute";
+    if (test){ qDebug()<<"materiel ajoute";
+        QMessageBox::information(nullptr, QObject::tr("Ajouter un materiel"),
+                          QObject::tr("Materiel ajoute.\n"
+                                      "Click Cancel to exit."), QMessageBox::Cancel);
+
+        }
+          else
+              QMessageBox::critical(nullptr, QObject::tr("Ajouter un materiel"),
+                          QObject::tr("Erreur !\n"
+                                      "Click Cancel to exit."), QMessageBox::Cancel);
 }
 
 
@@ -142,7 +199,18 @@ void ProjetKhaled::on_pbMaterielModif2_clicked()
     int idFournisseur=ui->LEIDFournisseurMaterielModif->text().toInt();
     materiel mat(id,nom,quantite,prix,idFournisseur);
     bool test=mat.modifierMateriel(id);
-    if (test) ui->tabMateriel->setModel(tmpMateriel.afficherMateriel());
+    if (test) { ui->tabMateriel->setModel(tmpMateriel.afficherMateriel());
+        qDebug()<<"materiel modifie";
+    QMessageBox::information(nullptr, QObject::tr("Modifier un materiel"),
+                      QObject::tr("Materiel modifie.\n"
+                                  "Click Cancel to exit."), QMessageBox::Cancel);
+
+    }
+      else
+          QMessageBox::critical(nullptr, QObject::tr("Modifier un materiel"),
+                      QObject::tr("Erreur !\n"
+                                  "Click Cancel to exit."), QMessageBox::Cancel);
+
 
 }
 
@@ -150,6 +218,23 @@ void ProjetKhaled::on_pbMaterielSupprimer_clicked()
 {
     int IDMateriel=ui->LEIDMaterielSupprimer->text().toInt();
     bool test=tmpMateriel.supprimerMateriel(IDMateriel);
-      if (test)
+      if (test){
          ui->tabMateriel->setModel(tmpMateriel.afficherMateriel());
+         qDebug()<<"Materiel supprime";
+     QMessageBox::information(nullptr, QObject::tr("Supprimer un materiel"),
+                       QObject::tr("Materiel supprime.\n"
+                                   "Click Cancel to exit."), QMessageBox::Cancel);
+
+     }
+       else
+           QMessageBox::critical(nullptr, QObject::tr("Supprimer un materiel"),
+                       QObject::tr("Erreur !\n"
+                                   "Click Cancel to exit."), QMessageBox::Cancel);
 }
+
+void ProjetKhaled::on_pbMaterielAfficher_clicked()
+{
+      ui->tabMateriel->setModel(tmpMateriel.afficherMateriel());
+}
+
+
