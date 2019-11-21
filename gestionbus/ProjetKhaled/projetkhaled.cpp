@@ -5,6 +5,12 @@
 #include "materiel.h"
 #include <QDebug>
 #include <QMessageBox>
+
+
+
+//####################################################################################################################
+//###################################################USER INTERFACE###################################################
+//####################################################################################################################
 ProjetKhaled::ProjetKhaled(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::ProjetKhaled)
@@ -13,8 +19,6 @@ ProjetKhaled::ProjetKhaled(QWidget *parent)
     ui->tabBus->setModel(tmpBus.afficher());
     ui->tabFournisseur->setModel(tmpFournisseur.afficherFournisseur());
     ui->tabMateriel->setModel(tmpMateriel.afficherMateriel());
-
-
 }
 
 
@@ -23,6 +27,12 @@ ProjetKhaled::~ProjetKhaled()
     delete ui;
 }
 
+
+
+
+//#########################################################################################################
+//###################################################BUS###################################################
+//#########################################################################################################
 
 void ProjetKhaled::on_ConfirmerAjoutBus_clicked()
 {
@@ -96,12 +106,17 @@ void ProjetKhaled::on_pb_supprimer_clicked()
 
 }
 
-
 void ProjetKhaled::on_pbBusAfficher_clicked()
 {
     ui->tabBus->setModel(tmpBus.afficher());
 }
 
+
+
+
+//#################################################################################################################
+//###################################################Fournisseur###################################################
+//#################################################################################################################
 
 void ProjetKhaled::on_pbAjouterFournisseur_clicked()
 {
@@ -120,9 +135,6 @@ void ProjetKhaled::on_pbAjouterFournisseur_clicked()
                           QObject::tr("Erreur !\n"
                                       "Click Cancel to exit."), QMessageBox::Cancel);
 }
-
-
-
 
 void ProjetKhaled::on_pbModifierFournisseur_clicked()
 {
@@ -167,6 +179,11 @@ void ProjetKhaled::on_pbFournisseurAfficher_clicked()
 
 
 
+
+//##############################################################################################################
+//###################################################Materiel###################################################
+//##############################################################################################################
+
 void ProjetKhaled::on_pbMaterielAjout_clicked()
 {
     int id=ui->LEIDMaterielAjout->text().toInt();
@@ -187,8 +204,6 @@ void ProjetKhaled::on_pbMaterielAjout_clicked()
                           QObject::tr("Erreur !\n"
                                       "Click Cancel to exit."), QMessageBox::Cancel);
 }
-
-
 
 void ProjetKhaled::on_pbMaterielModif2_clicked()
 {
