@@ -82,10 +82,12 @@ bool materiel::modifierMateriel(int id)
 
 QSqlQueryModel * materiel::recherche(){
 QSqlQueryModel * model= new QSqlQueryModel();
-model->setQuery("Select * from Remise where id = :id ");
-model->setHeaderData(0, Qt::Horizontal, QObject::tr("id"));
-model->setHeaderData(1, Qt::Horizontal, QObject::tr("taux"));
-model->setHeaderData(2, Qt::Horizontal, QObject::tr("ide"));
+model->setQuery("Select * from materiel where id = :id ");
+model->setHeaderData(0, Qt::Horizontal, QObject::tr("id materiel"));
+model->setHeaderData(1, Qt::Horizontal, QObject::tr("nom"));
+model->setHeaderData(2, Qt::Horizontal, QObject::tr("quantite"));
+model->setHeaderData(2, Qt::Horizontal, QObject::tr("prix"));
+model->setHeaderData(2, Qt::Horizontal, QObject::tr("id fournisseur"));
     return model;
 }
 QSqlQueryModel * materiel::stat(){
@@ -96,3 +98,5 @@ model->setHeaderData(1, Qt::Horizontal, QObject::tr("Avg"));
 model->setHeaderData(2, Qt::Horizontal, QObject::tr("Min"));
     return model;
 }
+
+
