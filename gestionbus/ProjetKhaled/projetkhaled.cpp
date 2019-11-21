@@ -19,6 +19,8 @@ ProjetKhaled::ProjetKhaled(QWidget *parent)
     ui->tabBus->setModel(tmpBus.afficher());
     ui->tabFournisseur->setModel(tmpFournisseur.afficherFournisseur());
     ui->tabMateriel->setModel(tmpMateriel.afficherMateriel());
+    ui->tabMaterielStat->setModel(tmpMateriel.stat());
+ //   ui->tabMaterielRechercher->setModel(tmpMateriel.recherche());
 }
 
 
@@ -253,3 +255,46 @@ void ProjetKhaled::on_pbMaterielAfficher_clicked()
 }
 
 
+
+void ProjetKhaled::on_pbStatMaterielPrix_clicked()
+{
+    bool test = tmpMateriel.stat();
+    if (test){
+    ui->tabMaterielStat->setModel(tmpMateriel.stat());}//refresh
+    QMessageBox::information(nullptr, QObject::tr("Stat prix terminer"),
+    QObject::tr("Stat prix terminer.\n"
+    "Click ok to exit."), QMessageBox::Ok);
+
+
+}
+
+void ProjetKhaled::on_pbStatMaterielQuantite_clicked()
+{
+    bool test = tmpMateriel.statQuantite();
+    if (test){
+    ui->tabMaterielStat->setModel(tmpMateriel.stat());}//refresh
+    QMessageBox::information(nullptr, QObject::tr("Stat quantite terminer"),
+    QObject::tr("Stat quantite terminer.\n"
+    "Click ok to exit."), QMessageBox::Ok);
+
+}
+
+
+
+void ProjetKhaled::on_pbMaterielRechercher_clicked()
+{
+    int IDMateriel=ui->LEIDMaterielRechercher->text().toInt();
+    bool test=tmpMateriel.recherche(IDMateriel);
+    if(test)
+    {ui->tabMaterielRechercher->setModel(tmpMateriel.recherche(IDMateriel));//refresh
+        QMessageBox::information(nullptr, QObject::tr("Recherche Terminer"),
+                    QObject::tr("Recherche Terminer.\n"
+                                "Click Cancel to exit."), QMessageBox::Cancel);
+
+    }
+    else
+        QMessageBox::critical(nullptr, QObject::tr("Recherche"),
+                    QObject::tr("Erreur!\n"
+                                "Click Cancel to exit."), QMessageBox::Cancel);
+
+}

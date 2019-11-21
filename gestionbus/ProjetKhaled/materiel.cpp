@@ -62,8 +62,8 @@ bool materiel::supprimerMateriel(int id)
 {
     QSqlQuery query;
     QString code2=QString::number(id);
-    query.prepare("DELETE FROM materiel WHERE ID= :id");
-    query.bindValue(":id",id);
+    query.prepare("DELETE FROM materiel WHERE ID= :code2");
+    query.bindValue(":code2",id);
     return query.exec();
 }
 
@@ -80,22 +80,33 @@ bool materiel::modifierMateriel(int id)
 }
 
 
-QSqlQueryModel * materiel::recherche(){
+QSqlQueryModel * materiel::recherche(int id){
 QSqlQueryModel * model= new QSqlQueryModel();
-model->setQuery("Select * from materiel where id = :id ");
+QString code=QString::number(id);
+model->setQuery("Select * from materiel where id = :code ");
 model->setHeaderData(0, Qt::Horizontal, QObject::tr("id materiel"));
 model->setHeaderData(1, Qt::Horizontal, QObject::tr("nom"));
-model->setHeaderData(2, Qt::Horizontal, QObject::tr("quantite"));
-model->setHeaderData(2, Qt::Horizontal, QObject::tr("prix"));
-model->setHeaderData(2, Qt::Horizontal, QObject::tr("id fournisseur"));
+model->setHeaderData(3, Qt::Horizontal, QObject::tr("quantite"));
+model->setHeaderData(4, Qt::Horizontal, QObject::tr("prix"));
+model->setHeaderData(5, Qt::Horizontal, QObject::tr("id fournisseur"));
     return model;
 }
-QSqlQueryModel * materiel::stat(){
+QSqlQueryModel * materiel::statQuantite(){
 QSqlQueryModel * model= new QSqlQueryModel();
 model->setQuery("Select  Max(quantite) , Avg(quantite) , Min(quantite) from materiel  ");
 model->setHeaderData(0, Qt::Horizontal, QObject::tr("Max"));
 model->setHeaderData(1, Qt::Horizontal, QObject::tr("Avg"));
 model->setHeaderData(2, Qt::Horizontal, QObject::tr("Min"));
+    return model;
+}
+
+QSqlQueryModel * materiel::stat(){
+QSqlQueryModel * model= new QSqlQueryModel();
+model->setQuery("Select  Max(prix) , Avg(prix) , Min(prix) from materiel  ");
+model->setHeaderData(0, Qt::Horizontal, QObject::tr("Max"));
+model->setHeaderData(1, Qt::Horizontal, QObject::tr("Avg"));
+model->setHeaderData(2, Qt::Horizontal, QObject::tr("Min"));
+
     return model;
 }
 

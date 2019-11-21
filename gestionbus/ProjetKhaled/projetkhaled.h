@@ -43,6 +43,12 @@ private slots:
 
     void on_pbBusAfficher_clicked();
 
+    void on_pbStatMaterielPrix_clicked();
+
+    void on_pbStatMaterielQuantite_clicked();
+
+    void on_pbMaterielRechercher_clicked();
+
 private:
     Ui::ProjetKhaled *ui;
     bus tmpBus;

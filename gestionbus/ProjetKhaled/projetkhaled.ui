@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -875,7 +875,7 @@
      <attribute name="title">
       <string>Gestion des Materiels</string>
      </attribute>
-     <widget class="QTabWidget" name="tabWidget_5">
+     <widget class="QTabWidget" name="statMateriel">
       <property name="geometry">
        <rect>
         <x>0</x>
@@ -885,7 +885,7 @@
        </rect>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>5</number>
       </property>
       <widget class="QWidget" name="tab_32">
        <attribute name="title">
@@ -1347,6 +1347,98 @@
         </property>
         <property name="text">
          <string>Afficher</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="tab_13">
+       <attribute name="title">
+        <string>Stat materiel</string>
+       </attribute>
+       <widget class="QTableView" name="tabMaterielStat">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>641</width>
+          <height>421</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pbStatMaterielPrix">
+        <property name="geometry">
+         <rect>
+          <x>90</x>
+          <y>450</y>
+          <width>93</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Prix</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pbStatMaterielQuantite">
+        <property name="geometry">
+         <rect>
+          <x>280</x>
+          <y>450</y>
+          <width>93</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Quantite</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="tab_14">
+       <attribute name="title">
+        <string>Rechercher materiel</string>
+       </attribute>
+       <widget class="QLineEdit" name="LEIDMaterielRechercher">
+        <property name="geometry">
+         <rect>
+          <x>170</x>
+          <y>450</y>
+          <width>131</width>
+          <height>21</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QTableView" name="tabMaterielRechercher">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>641</width>
+          <height>421</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_4">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>450</y>
+          <width>101</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>ID de materiel</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pbMaterielRechercher">
+        <property name="geometry">
+         <rect>
+          <x>380</x>
+          <y>450</y>
+          <width>93</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Confirmer</string>
         </property>
        </widget>
       </widget>
