@@ -1,0 +1,21 @@
+#ifndef ETUDIANT_H
+#define ETUDIANT_H
+#include <QString>
+#include <QSqlQuery>
+#include <QSqlQueryModel>
+class Remise
+{public:
+    Remise();
+    Remise(int, float , int);
+    float get_taux();
+    int get_id();
+    int get_ide();
+    bool ajouter();
+    QSqlQueryModel * afficher();
+    bool supprimer(int);
+private:
+    int id,ide;
+    float taux;
+};
+
+#endif // ETUDIANT_H
