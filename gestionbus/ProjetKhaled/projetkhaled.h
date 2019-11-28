@@ -2,9 +2,11 @@
 #define PROJETKHALED_H
 
 #include <QMainWindow>
+#include <QVBoxLayout>
 #include "bus.h"
 #include "fournisseur.h"
 #include "materiel.h"
+#include "stat.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class ProjetKhaled; }
@@ -49,12 +51,22 @@ private slots:
 
     void on_pbMaterielRechercher_clicked();
 
+    void on_pbMaterielTri1Alpha_clicked();
+
+    void on_Stat_currentChanged(int index);
+
+
 private:
     Ui::ProjetKhaled *ui;
     bus tmpBus;
     fournisseur tmpFournisseur;
     materiel tmpMateriel;
+
+    QVBoxLayout * mainLayout;
+       Stat s;
+
 };
+
 
 
 #endif // PROJETKHALED_H

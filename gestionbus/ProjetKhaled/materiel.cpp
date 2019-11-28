@@ -83,12 +83,12 @@ bool materiel::modifierMateriel(int id)
 QSqlQueryModel * materiel::recherche(int id){
 QSqlQueryModel * model= new QSqlQueryModel();
 QString code=QString::number(id);
-model->setQuery("Select * from materiel where id = :code ");
-model->setHeaderData(0, Qt::Horizontal, QObject::tr("id materiel"));
-model->setHeaderData(1, Qt::Horizontal, QObject::tr("nom"));
-model->setHeaderData(3, Qt::Horizontal, QObject::tr("quantite"));
-model->setHeaderData(4, Qt::Horizontal, QObject::tr("prix"));
-model->setHeaderData(5, Qt::Horizontal, QObject::tr("id fournisseur"));
+model->setQuery("select * FROM materiel WHERE id="+code );
+model->setHeaderData(0,Qt::Horizontal,QObject::tr("id materiel"));
+model->setHeaderData(1,Qt::Horizontal,QObject::tr("nom"));
+model->setHeaderData(3,Qt::Horizontal,QObject::tr("quantite"));
+model->setHeaderData(4,Qt::Horizontal,QObject::tr("prix"));
+model->setHeaderData(5,Qt::Horizontal,QObject::tr("id fournisseur"));
     return model;
 }
 QSqlQueryModel * materiel::statQuantite(){
@@ -111,3 +111,13 @@ model->setHeaderData(2, Qt::Horizontal, QObject::tr("Min"));
 }
 
 
+QSqlQueryModel * materiel::tri(){
+QSqlQueryModel * model= new QSqlQueryModel();
+model->setQuery("Select * from materiel order by id");
+model->setHeaderData(0,Qt::Horizontal,QObject::tr("ID"));
+model->setHeaderData(1,Qt::Horizontal,QObject::tr("NOM"));
+model->setHeaderData(2,Qt::Horizontal,QObject::tr("QUANTITE"));
+model->setHeaderData(3,Qt::Horizontal,QObject::tr("PRIX"));
+model->setHeaderData(4,Qt::Horizontal,QObject::tr("IDFOURNISSEUR"));
+    return model;
+}

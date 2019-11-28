@@ -1,5 +1,6 @@
-QT       += core gui
+QT       += core gui charts
 QT += sql
+QT += Multimedia
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11
@@ -17,26 +18,25 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     bus.cpp \
-    busajouterreur1.cpp \
     busmodificationerreur1.cpp \
     connection.cpp \
     fournisseur.cpp \
     main.cpp \
     materiel.cpp \
-    projetkhaled.cpp
+    projetkhaled.cpp \
+    stat.cpp
 
 HEADERS += \
     bus.h \
-    busajouterreur1.h \
     busmodificationerreur1.h \
     connection.h \
     fournisseur.h \
     materiel.h \
-    projetkhaled.h
+    projetkhaled.h \
+    stat.h
 
 FORMS += \
     busajouterreur1.ui \
-    busmodificationerreur1.ui \
     projetkhaled.ui
 
 # Default rules for deployment.
