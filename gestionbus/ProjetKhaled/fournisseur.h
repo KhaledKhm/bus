@@ -17,6 +17,9 @@ public:
     bool supprimerFournisseur(int);
    // QSqlQueryModel * stat();
     QSqlQueryModel * recherche();
+    QSqlQueryModel * rechercheFournisseur(int);
+    QSqlQueryModel * triFournisseur();
+    QSqlQueryModel * triFournisseur2();
 private:
     int idFournisseur;
     QString nomFournisseur;

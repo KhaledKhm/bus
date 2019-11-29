@@ -70,6 +70,31 @@ model->setHeaderData(2, Qt::Horizontal, QObject::tr("ide"));
     return model;
 }
 
+QSqlQueryModel * fournisseur::triFournisseur(){
+QSqlQueryModel * model= new QSqlQueryModel();
+model->setQuery("Select * from fournisseur order by id");
+model->setHeaderData(0,Qt::Horizontal,QObject::tr("ID"));
+model->setHeaderData(1,Qt::Horizontal,QObject::tr("NOM"));
+return model;
+}
+QSqlQueryModel * fournisseur::triFournisseur2(){
+QSqlQueryModel * model= new QSqlQueryModel();
+model->setQuery("Select * from fournisseur order by nom");
+model->setHeaderData(0,Qt::Horizontal,QObject::tr("ID"));
+model->setHeaderData(1,Qt::Horizontal,QObject::tr("NOM"));
+return model;
+}
+
+QSqlQueryModel * fournisseur::rechercheFournisseur(int id){
+QSqlQueryModel * model= new QSqlQueryModel();
+QString code=QString::number(id);
+model->setQuery("select * FROM fournisseur WHERE id="+code );
+model->setHeaderData(0,Qt::Horizontal,QObject::tr("ID"));
+model->setHeaderData(1,Qt::Horizontal,QObject::tr("NOM"));
+    return model;
+}
+
+
 
 
 

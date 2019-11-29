@@ -19,6 +19,7 @@ public:
     QSqlQueryModel * statQuantite();
     QSqlQueryModel * recherche(int);
     QSqlQueryModel * tri();
+    QSqlQueryModel * tri2();
 private:
     int idMateriel;
     QString nomMateriel;

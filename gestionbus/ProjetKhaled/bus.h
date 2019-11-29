@@ -19,6 +19,9 @@ public:
     QSqlQueryModel * afficher();
     bool rechercher(int);
     bool supprimer(int);
+    QSqlQueryModel * rechercheBus(int);
+    QSqlQueryModel * triBus();
+    QSqlQueryModel * triBus2();
 private:
     int id;
     int nbPlace;

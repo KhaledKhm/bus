@@ -56,6 +56,18 @@ private slots:
     void on_Stat_currentChanged(int index);
 
 
+    void on_pbBusRechercher_clicked();
+
+    void on_pbFournisseurRechercher_clicked();
+
+    void on_pbFournisseurTri1Alpha_clicked();
+
+    void on_pbBusTri1Alpha_clicked();
+
+    void on_pbBusTri1Alpha_2_clicked();
+
+    void on_pbMaterielTri1Alpha_3_clicked();
+
 private:
     Ui::ProjetKhaled *ui;
     bus tmpBus;

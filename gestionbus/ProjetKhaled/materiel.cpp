@@ -121,3 +121,15 @@ model->setHeaderData(3,Qt::Horizontal,QObject::tr("PRIX"));
 model->setHeaderData(4,Qt::Horizontal,QObject::tr("IDFOURNISSEUR"));
     return model;
 }
+
+
+QSqlQueryModel * materiel::tri2(){
+QSqlQueryModel * model= new QSqlQueryModel();
+model->setQuery("Select * from materiel order by nom");
+model->setHeaderData(0,Qt::Horizontal,QObject::tr("ID"));
+model->setHeaderData(1,Qt::Horizontal,QObject::tr("NOM"));
+model->setHeaderData(2,Qt::Horizontal,QObject::tr("QUANTITE"));
+model->setHeaderData(3,Qt::Horizontal,QObject::tr("PRIX"));
+model->setHeaderData(4,Qt::Horizontal,QObject::tr("IDFOURNISSEUR"));
+    return model;
+}
