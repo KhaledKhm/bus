@@ -1,0 +1,2100 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>747</width>
+    <height>488</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Gestion des Clients</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QTabWidget" name="tabWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>10</y>
+      <width>711</width>
+      <height>431</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+QMainWindow {
+
+	background-color:#ececec;
+
+}
+
+QTextEdit {
+
+	border-width: 1px;
+
+	border-style: solid;
+
+	border-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 113, 255, 255), stop:1 rgba(91, 171, 252, 255));
+
+}
+
+QPlainTextEdit {
+
+	border-width: 1px;
+
+	border-style: solid;
+
+	border-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 113, 255, 255), stop:1 rgba(91, 171, 252, 255));
+
+}
+
+QToolButton {
+
+	border-style: solid;
+
+	border-top-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgb(215, 215, 215), stop:1 rgb(222, 222, 222));
+
+	border-right-color: qlineargradient(spread:pad, x1:0, y1:0.5, x2:1, y2:0.5, stop:0 rgb(217, 217, 217), stop:1 rgb(227, 227, 227));
+
+	border-left-color: qlineargradient(spread:pad, x1:0, y1:0.5, x2:1, y2:0.5, stop:0 rgb(227, 227, 227), stop:1 rgb(217, 217, 217));
+
+	border-bottom-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgb(215, 215, 215), stop:1 rgb(222, 222, 222));
+
+	border-width: 1px;
+
+	border-radius: 5px;
+
+	color: rgb(0,0,0);
+
+	padding: 2px;
+
+	background-color: rgb(255,255,255);
+
+}
+
+QToolButton:hover{
+
+	border-style: solid;
+
+	border-top-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgb(195, 195, 195), stop:1 rgb(222, 222, 222));
+
+	border-right-color: qlineargradient(spread:pad, x1:0, y1:0.5, x2:1, y2:0.5, stop:0 rgb(197, 197, 197), stop:1 rgb(227, 227, 227));
+
+	border-left-color: qlineargradient(spread:pad, x1:0, y1:0.5, x2:1, y2:0.5, stop:0 rgb(227, 227, 227), stop:1 rgb(197, 197, 197));
+
+	border-bottom-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgb(195, 195, 195), stop:1 rgb(222, 222, 222));
+
+	border-width: 1px;
+
+	border-radius: 5px;
+
+	color: rgb(0,0,0);
+
+	padding: 2px;
+
+	background-color: rgb(255,255,255);
+
+}
+
+QToolButton:pressed{
+
+	border-style: solid;
+
+	border-top-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgb(215, 215, 215), stop:1 rgb(222, 222, 222));
+
+	border-right-color: qlineargradient(spread:pad, x1:0, y1:0.5, x2:1, y2:0.5, stop:0 rgb(217, 217, 217), stop:1 rgb(227, 227, 227));
+
+	border-left-color: qlineargradient(spread:pad, x1:0, y1:0.5, x2:1, y2:0.5, stop:0 rgb(227, 227, 227), stop:1 rgb(217, 217, 217));
+
+	border-bottom-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgb(215, 215, 215), stop:1 rgb(222, 222, 222));
+
+	border-width: 1px;
+
+	border-radius: 5px;
+
+	color: rgb(0,0,0);
+
+	padding: 2px;
+
+	background-color: rgb(142,142,142);
+
+}
+
+QPushButton{
+
+	border-style: solid;
+
+	border-top-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgb(215, 215, 215), stop:1 rgb(222, 222, 222));
+
+	border-right-color: qlineargradient(spread:pad, x1:0, y1:0.5, x2:1, y2:0.5, stop:0 rgb(217, 217, 217), stop:1 rgb(227, 227, 227));
+
+	border-left-color: qlineargradient(spread:pad, x1:0, y1:0.5, x2:1, y2:0.5, stop:0 rgb(227, 227, 227), stop:1 rgb(217, 217, 217));
+
+	border-bottom-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgb(215, 215, 215), stop:1 rgb(222, 222, 222));
+
+	border-width: 1px;
+
+	border-radius: 5px;
+
+	color: rgb(0,0,0);
+
+	padding: 2px;
+
+	background-color: rgb(255,255,255);
+
+}
+
+QPushButton::default{
+
+	border-style: solid;
+
+	border-top-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgb(215, 215, 215), stop:1 rgb(222, 222, 222));
+
+	border-right-color: qlineargradient(spread:pad, x1:0, y1:0.5, x2:1, y2:0.5, stop:0 rgb(217, 217, 217), stop:1 rgb(227, 227, 227));
+
+	border-left-color: qlineargradient(spread:pad, x1:0, y1:0.5, x2:1, y2:0.5, stop:0 rgb(227, 227, 227), stop:1 rgb(217, 217, 217));
+
+	border-bottom-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgb(215, 215, 215), stop:1 rgb(222, 222, 222));
+
+	border-width: 1px;
+
+	border-radius: 5px;
+
+	color: rgb(0,0,0);
+
+	padding: 2px;
+
+	background-color: rgb(255,255,255);
+
+}
+
+QPushButton:hover{
+
+	border-style: solid;
+
+	border-top-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgb(195, 195, 195), stop:1 rgb(222, 222, 222));
+
+	border-right-color: qlineargradient(spread:pad, x1:0, y1:0.5, x2:1, y2:0.5, stop:0 rgb(197, 197, 197), stop:1 rgb(227, 227, 227));
+
+	border-left-color: qlineargradient(spread:pad, x1:0, y1:0.5, x2:1, y2:0.5, stop:0 rgb(227, 227, 227), stop:1 rgb(197, 197, 197));
+
+	border-bottom-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgb(195, 195, 195), stop:1 rgb(222, 222, 222));
+
+	border-width: 1px;
+
+	border-radius: 5px;
+
+	color: rgb(0,0,0);
+
+	padding: 2px;
+
+	background-color: rgb(255,255,255);
+
+}
+
+QPushButton:pressed{
+
+	border-style: solid;
+
+	border-top-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgb(215, 215, 215), stop:1 rgb(222, 222, 222));
+
+	border-right-color: qlineargradient(spread:pad, x1:0, y1:0.5, x2:1, y2:0.5, stop:0 rgb(217, 217, 217), stop:1 rgb(227, 227, 227));
+
+	border-left-color: qlineargradient(spread:pad, x1:0, y1:0.5, x2:1, y2:0.5, stop:0 rgb(227, 227, 227), stop:1 rgb(217, 217, 217));
+
+	border-bottom-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgb(215, 215, 215), stop:1 rgb(222, 222, 222));
+
+	border-width: 1px;
+
+	border-radius: 5px;
+
+	color: rgb(0,0,0);
+
+	padding: 2px;
+
+	background-color: rgb(142,142,142);
+
+}
+
+QPushButton:disabled{
+
+	border-style: solid;
+
+	border-top-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgb(215, 215, 215), stop:1 rgb(222, 222, 222));
+
+	border-right-color: qlineargradient(spread:pad, x1:0, y1:0.5, x2:1, y2:0.5, stop:0 rgb(217, 217, 217), stop:1 rgb(227, 227, 227));
+
+	border-left-color: qlineargradient(spread:pad, x1:0, y1:0.5, x2:1, y2:0.5, stop:0 rgb(227, 227, 227), stop:1 rgb(217, 217, 217));
+
+	border-bottom-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgb(215, 215, 215), stop:1 rgb(222, 222, 222));
+
+	border-width: 1px;
+
+	border-radius: 5px;
+
+	color: #808086;
+
+	padding: 2px;
+
+	background-color: rgb(142,142,142);
+
+}
+
+QLineEdit {
+
+	border-width: 1px; border-radius: 4px;
+
+	border-style: solid;
+
+	border-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 113, 255, 255), stop:1 rgba(91, 171, 252, 255));
+
+}
+
+QLabel {
+
+	color: #000000;
+
+}
+
+QLCDNumber {
+
+	color: rgb(0, 113, 255, 255);
+
+}
+
+QProgressBar {
+
+	text-align: center;
+
+	color: rgb(240, 240, 240);
+
+	border-width: 1px; 
+
+	border-radius: 10px;
+
+	border-color: rgb(230, 230, 230);
+
+	border-style: solid;
+
+	background-color:rgb(207,207,207);
+
+}
+
+QProgressBar::chunk {
+
+	background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(49, 147, 250, 255), stop:1 rgba(34, 142, 255, 255));
+
+	border-radius: 10px;
+
+}
+
+QMenuBar {
+
+	background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(207, 209, 207, 255), stop:1 rgba(230, 229, 230, 255));
+
+}
+
+QMenuBar::item {
+
+	color: #000000;
+
+  	spacing: 3px;
+
+  	padding: 1px 4px;
+
+	background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(207, 209, 207, 255), stop:1 rgba(230, 229, 230, 255));
+
+}
+
+
+
+QMenuBar::item:selected {
+
+  	background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 113, 255, 255), stop:1 rgba(91, 171, 252, 255));
+
+	color: #FFFFFF;
+
+}
+
+QMenu::item:selected {
+
+	border-style: solid;
+
+	border-top-color: transparent;
+
+	border-right-color: transparent;
+
+	border-left-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 113, 255, 255), stop:1 rgba(91, 171, 252, 255));
+
+	border-bottom-color: transparent;
+
+	border-left-width: 2px;
+
+	color: #000000;
+
+	padding-left:15px;
+
+	padding-top:4px;
+
+	padding-bottom:4px;
+
+	padding-right:7px;
+
+}
+
+QMenu::item {
+
+	border-style: solid;
+
+	border-top-color: transparent;
+
+	border-right-color: transparent;
+
+	border-left-color: transparent;
+
+	border-bottom-color: transparent;
+
+	border-bottom-width: 1px;
+
+	color: #000000;
+
+	padding-left:17px;
+
+	padding-top:4px;
+
+	padding-bottom:4px;
+
+	padding-right:7px;
+
+}
+
+QTabWidget {
+
+	color:rgb(0,0,0);
+
+	background-color:#000000;
+
+}
+
+QTabWidget::pane {
+
+		border-color: rgb(223,223,223);
+
+		background-color:rgb(226,226,226);
+
+		border-style: solid;
+
+		border-width: 2px;
+
+    	border-radius: 6px;
+
+}
+
+QTabBar::tab:first {
+
+	border-style: solid;
+
+	border-left-width:1px;
+
+	border-right-width:0px;
+
+	border-top-width:1px;
+
+	border-bottom-width:1px;
+
+	border-top-color: rgb(209,209,209);
+
+	border-left-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(209, 209, 209, 209), stop:1 rgba(229, 229, 229, 229));
+
+	border-bottom-color: rgb(229,229,229);
+
+	border-top-left-radius: 4px;
+
+	border-bottom-left-radius: 4px;
+
+	color: #000000;
+
+	padding: 3px;
+
+	margin-left:0px;
+
+	background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(247, 247, 247, 255), stop:1 rgba(255, 255, 255, 255));
+
+}
+
+QTabBar::tab:last {
+
+	border-style: solid;
+
+	border-width:1px;
+
+	border-top-color: rgb(209,209,209);
+
+	border-left-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(209, 209, 209, 209), stop:1 rgba(229, 229, 229, 229));
+
+	border-right-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(209, 209, 209, 209), stop:1 rgba(229, 229, 229, 229));
+
+	border-bottom-color: rgb(229,229,229);
+
+	border-top-right-radius: 4px;
+
+	border-bottom-right-radius: 4px;
+
+	color: #000000;
+
+	padding: 3px;
+
+	margin-left:0px;
+
+	background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(247, 247, 247, 255), stop:1 rgba(255, 255, 255, 255));
+
+}
+
+QTabBar::tab {
+
+	border-style: solid;
+
+	border-top-width:1px;
+
+	border-bottom-width:1px;
+
+	border-left-width:1px;
+
+	border-top-color: rgb(209,209,209);
+
+	border-left-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(209, 209, 209, 209), stop:1 rgba(229, 229, 229, 229));
+
+	border-bottom-color: rgb(229,229,229);
+
+	color: #000000;
+
+	padding: 3px;
+
+	margin-left:0px;
+
+	background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(247, 247, 247, 255), stop:1 rgba(255, 255, 255, 255));
+
+}
+
+QTabBar::tab:selected, QTabBar::tab:last:selected, QTabBar::tab:hover {
+
+  	border-style: solid;
+
+  	border-left-width:1px;
+
+	border-right-color: transparent;
+
+	border-top-color: rgb(209,209,209);
+
+	border-left-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(209, 209, 209, 209), stop:1 rgba(229, 229, 229, 229));
+
+	border-bottom-color: rgb(229,229,229);
+
+	color: #FFFFFF;
+
+	padding: 3px;
+
+	margin-left:0px;
+
+	background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 113, 255, 255), stop:1 rgba(91, 171, 252, 255));
+
+}
+
+
+
+QTabBar::tab:selected, QTabBar::tab:first:selected, QTabBar::tab:hover {
+
+  	border-style: solid;
+
+  	border-left-width:1px;
+
+  	border-bottom-width:1px;
+
+  	border-top-width:1px;
+
+	border-right-color: transparent;
+
+	border-top-color: rgb(209,209,209);
+
+	border-left-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(209, 209, 209, 209), stop:1 rgba(229, 229, 229, 229));
+
+	border-bottom-color: rgb(229,229,229);
+
+	color: #FFFFFF;
+
+	padding: 3px;
+
+	margin-left:0px;
+
+	background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 113, 255, 255), stop:1 rgba(91, 171, 252, 255));
+
+}
+
+
+
+QCheckBox {
+
+	color: #000000;
+
+	padding: 2px;
+
+}
+
+QCheckBox:disabled {
+
+	color: #808086;
+
+	padding: 2px;
+
+}
+
+
+
+QCheckBox:hover {
+
+	border-radius:4px;
+
+	border-style:solid;
+
+	padding-left: 1px;
+
+	padding-right: 1px;
+
+	padding-bottom: 1px;
+
+	padding-top: 1px;
+
+	border-width:1px;
+
+	border-color: transparent;
+
+}
+
+QCheckBox::indicator:checked {
+
+
+
+	height: 10px;
+
+	width: 10px;
+
+	border-style:solid;
+
+	border-width: 1px;
+
+	border-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 113, 255, 255), stop:1 rgba(91, 171, 252, 255));
+
+	color: #000000;
+
+	background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 113, 255, 255), stop:1 rgba(91, 171, 252, 255));
+
+}
+
+QCheckBox::indicator:unchecked {
+
+
+
+	height: 10px;
+
+	width: 10px;
+
+	border-style:solid;
+
+	border-width: 1px;
+
+	border-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 113, 255, 255), stop:1 rgba(91, 171, 252, 255));
+
+	color: #000000;
+
+}
+
+QRadioButton {
+
+	color: 000000;
+
+	padding: 1px;
+
+}
+
+QRadioButton::indicator:checked {
+
+	height: 10px;
+
+	width: 10px;
+
+	border-style:solid;
+
+	border-radius:5px;
+
+	border-width: 1px;
+
+	border-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 113, 255, 255), stop:1 rgba(91, 171, 252, 255));
+
+	color: #a9b7c6;
+
+	background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 113, 255, 255), stop:1 rgba(91, 171, 252, 255));
+
+}
+
+QRadioButton::indicator:!checked {
+
+	height: 10px;
+
+	width: 10px;
+
+	border-style:solid;
+
+	border-radius:5px;
+
+	border-width: 1px;
+
+	border-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 113, 255, 255), stop:1 rgba(91, 171, 252, 255));
+
+	color: #a9b7c6;
+
+	background-color: transparent;
+
+}
+
+QStatusBar {
+
+	color:#027f7f;
+
+}
+
+QSpinBox {
+
+	border-style: solid;
+
+	border-width: 1px;
+
+	border-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 113, 255, 255), stop:1 rgba(91, 171, 252, 255));
+
+}
+
+QDoubleSpinBox {
+
+	border-style: solid;
+
+	border-width: 1px;
+
+	border-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 113, 255, 255), stop:1 rgba(91, 171, 252, 255));
+
+}
+
+QTimeEdit {
+
+	border-style: solid;
+
+	border-width: 1px;
+
+	border-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 113, 255, 255), stop:1 rgba(91, 171, 252, 255));
+
+}
+
+QDateTimeEdit {
+
+	border-style: solid;
+
+	border-width: 1px;
+
+	border-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 113, 255, 255), stop:1 rgba(91, 171, 252, 255));
+
+}
+
+QDateEdit {
+
+	border-style: solid;
+
+	border-width: 1px;
+
+	border-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 113, 255, 255), stop:1 rgba(91, 171, 252, 255));
+
+}
+
+
+
+QToolBox {
+
+	color: #a9b7c6;
+
+	background-color:#000000;
+
+}
+
+QToolBox::tab {
+
+	color: #a9b7c6;
+
+	background-color:#000000;
+
+}
+
+QToolBox::tab:selected {
+
+	color: #FFFFFF;
+
+	background-color:#000000;
+
+}
+
+QScrollArea {
+
+	color: #FFFFFF;
+
+	background-color:#000000;
+
+}
+
+QSlider::groove:horizontal {
+
+	height: 5px;
+
+	background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(49, 147, 250, 255), stop:1 rgba(34, 142, 255, 255));
+
+}
+
+QSlider::groove:vertical {
+
+	width: 5px;
+
+	background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(49, 147, 250, 255), stop:1 rgba(34, 142, 255, 255));
+
+}
+
+QSlider::handle:horizontal {
+
+	background: rgb(253,253,253);
+
+	border-style: solid;
+
+	border-width: 1px;
+
+	border-color: rgb(207,207,207);
+
+	width: 12px;
+
+	margin: -5px 0;
+
+	border-radius: 7px;
+
+}
+
+QSlider::handle:vertical {
+
+	background: rgb(253,253,253);
+
+	border-style: solid;
+
+	border-width: 1px;
+
+	border-color: rgb(207,207,207);
+
+	height: 12px;
+
+	margin: 0 -5px;
+
+	border-radius: 7px;
+
+}
+
+QSlider::add-page:horizontal {
+
+    background: rgb(181,181,181);
+
+}
+
+QSlider::add-page:vertical {
+
+    background: rgb(181,181,181);
+
+}
+
+QSlider::sub-page:horizontal {
+
+    background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(49, 147, 250, 255), stop:1 rgba(34, 142, 255, 255));
+
+}
+
+QSlider::sub-page:vertical {
+
+    background-color: qlineargradient(spread:pad, y1:0.5, x1:1, y2:0.5, x2:0, stop:0 rgba(49, 147, 250, 255), stop:1 rgba(34, 142, 255, 255));
+
+}
+
+QScrollBar:horizontal {
+
+	max-height: 20px;
+
+	border: 1px transparent grey;
+
+	margin: 0px 20px 0px 20px;
+
+}
+
+QScrollBar:vertical {
+
+	max-width: 20px;
+
+	border: 1px transparent grey;
+
+	margin: 20px 0px 20px 0px;
+
+}
+
+QScrollBar::handle:horizontal {
+
+	background: rgb(253,253,253);
+
+	border-style: solid;
+
+	border-width: 1px;
+
+	border-color: rgb(207,207,207);
+
+	border-radius: 7px;
+
+	min-width: 25px;
+
+}
+
+QScrollBar::handle:horizontal:hover {
+
+	background: rgb(253,253,253);
+
+	border-style: solid;
+
+	border-width: 1px;
+
+	border-color: rgb(147, 200, 200);
+
+	border-radius: 7px;
+
+	min-width: 25px;
+
+}
+
+QScrollBar::handle:vertical {
+
+	background: rgb(253,253,253);
+
+	border-style: solid;
+
+	border-width: 1px;
+
+	border-color: rgb(207,207,207);
+
+	border-radius: 7px;
+
+	min-height: 25px;
+
+}
+
+QScrollBar::handle:vertical:hover {
+
+	background: rgb(253,253,253);
+
+	border-style: solid;
+
+	border-width: 1px;
+
+	border-color: rgb(147, 200, 200);
+
+	border-radius: 7px;
+
+	min-height: 25px;
+
+}
+
+QScrollBar::add-line:horizontal {
+
+   border: 2px transparent grey;
+
+   border-top-right-radius: 7px;
+
+   border-bottom-right-radius: 7px;
+
+   background: rgba(34, 142, 255, 255);
+
+   width: 20px;
+
+   subcontrol-position: right;
+
+   subcontrol-origin: margin;
+
+}
+
+QScrollBar::add-line:horizontal:pressed {
+
+   border: 2px transparent grey;
+
+   border-top-right-radius: 7px;
+
+   border-bottom-right-radius: 7px;
+
+   background: rgb(181,181,181);
+
+   width: 20px;
+
+   subcontrol-position: right;
+
+   subcontrol-origin: margin;
+
+}
+
+QScrollBar::add-line:vertical {
+
+   border: 2px transparent grey;
+
+   border-bottom-left-radius: 7px;
+
+   border-bottom-right-radius: 7px;
+
+   background: rgba(34, 142, 255, 255);
+
+   height: 20px;
+
+   subcontrol-position: bottom;
+
+   subcontrol-origin: margin;
+
+}
+
+QScrollBar::add-line:vertical:pressed {
+
+   border: 2px transparent grey;
+
+   border-bottom-left-radius: 7px;
+
+   border-bottom-right-radius: 7px;
+
+   background: rgb(181,181,181);
+
+   height: 20px;
+
+   subcontrol-position: bottom;
+
+   subcontrol-origin: margin;
+
+}
+
+QScrollBar::sub-line:horizontal {
+
+   border: 2px transparent grey;
+
+   border-top-left-radius: 7px;
+
+   border-bottom-left-radius: 7px;
+
+   background: rgba(34, 142, 255, 255);
+
+   width: 20px;
+
+   subcontrol-position: left;
+
+   subcontrol-origin: margin;
+
+}
+
+QScrollBar::sub-line:horizontal:pressed {
+
+   border: 2px transparent grey;
+
+   border-top-left-radius: 7px;
+
+   border-bottom-left-radius: 7px;
+
+   background: rgb(181,181,181);
+
+   width: 20px;
+
+   subcontrol-position: left;
+
+   subcontrol-origin: margin;
+
+}
+
+QScrollBar::sub-line:vertical {
+
+   border: 2px transparent grey;
+
+   border-top-left-radius: 7px;
+
+   border-top-right-radius: 7px;
+
+   background: rgba(34, 142, 255, 255);
+
+   height: 20px;
+
+   subcontrol-position: top;
+
+   subcontrol-origin: margin;
+
+}
+
+QScrollBar::sub-line:vertical:pressed {
+
+   border: 2px transparent grey;
+
+   border-top-left-radius: 7px;
+
+   border-top-right-radius: 7px;
+
+   background: rgb(181,181,181);
+
+   height: 20px;
+
+   subcontrol-position: top;
+
+   subcontrol-origin: margin;
+
+}
+
+QScrollBar::left-arrow:horizontal {
+
+   border: 1px transparent grey;
+
+   border-top-left-radius: 3px;
+
+   border-bottom-left-radius: 3px;
+
+   width: 6px;
+
+   height: 6px;
+
+   background: white;
+
+}
+
+QScrollBar::right-arrow:horizontal {
+
+   border: 1px transparent grey;
+
+   border-top-right-radius: 3px;
+
+   border-bottom-right-radius: 3px;
+
+   width: 6px;
+
+   height: 6px;
+
+   background: white;
+
+}
+
+QScrollBar::up-arrow:vertical {
+
+   border: 1px transparent grey;
+
+   border-top-left-radius: 3px;
+
+   border-top-right-radius: 3px;
+
+   width: 6px;
+
+   height: 6px;
+
+   background: white;
+
+}
+
+QScrollBar::down-arrow:vertical {
+
+   border: 1px transparent grey;
+
+   border-bottom-left-radius: 3px;
+
+   border-bottom-right-radius: 3px;
+
+   width: 6px;
+
+   height: 6px;
+
+   background: white;
+
+}
+
+QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
+
+   background: none;
+
+}
+
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+
+   background: none;
+
+}
+
+
+</string>
+    </property>
+    <property name="currentIndex">
+     <number>2</number>
+    </property>
+    <widget class="QWidget" name="tab_5">
+     <attribute name="title">
+      <string>Parking</string>
+     </attribute>
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>10</y>
+        <width>661</width>
+        <height>371</height>
+       </rect>
+      </property>
+      <property name="currentIndex">
+       <number>3</number>
+      </property>
+      <widget class="QWidget" name="tab">
+       <attribute name="title">
+        <string>Ajouter</string>
+       </attribute>
+       <widget class="QLineEdit" name="capaciteParking">
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>120</y>
+          <width>113</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="idParking">
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>80</y>
+          <width>113</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="etatParking">
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>160</y>
+          <width>113</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label">
+        <property name="geometry">
+         <rect>
+          <x>80</x>
+          <y>80</y>
+          <width>55</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Identifiant</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_2">
+        <property name="geometry">
+         <rect>
+          <x>80</x>
+          <y>120</y>
+          <width>55</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Capacite</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_3">
+        <property name="geometry">
+         <rect>
+          <x>80</x>
+          <y>170</y>
+          <width>55</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Etat</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_5">
+        <property name="geometry">
+         <rect>
+          <x>170</x>
+          <y>30</y>
+          <width>101</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Ajouter un parking</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="ajouterParking">
+        <property name="geometry">
+         <rect>
+          <x>170</x>
+          <y>210</y>
+          <width>93</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Ajouter</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="tab_2">
+       <attribute name="title">
+        <string>Supprimer</string>
+       </attribute>
+       <widget class="QLabel" name="label_6">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>90</y>
+          <width>55</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Identfiant</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="idParkingSuppr">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>90</y>
+          <width>113</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="supprimerParking">
+        <property name="geometry">
+         <rect>
+          <x>130</x>
+          <y>150</y>
+          <width>93</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Supprimer</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_7">
+        <property name="geometry">
+         <rect>
+          <x>130</x>
+          <y>40</y>
+          <width>111</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Supprimer un parking</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="tab_3">
+       <attribute name="title">
+        <string>Modifier</string>
+       </attribute>
+       <widget class="QPushButton" name="modifierParking">
+        <property name="geometry">
+         <rect>
+          <x>170</x>
+          <y>220</y>
+          <width>93</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Modifier</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_12">
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>30</y>
+          <width>101</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Modifier un parking</string>
+        </property>
+       </widget>
+       <widget class="Line" name="line">
+        <property name="geometry">
+         <rect>
+          <x>80</x>
+          <y>100</y>
+          <width>291</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_19">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>170</y>
+          <width>55</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Etat</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="idParkingModif">
+        <property name="geometry">
+         <rect>
+          <x>200</x>
+          <y>80</y>
+          <width>113</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_20">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>120</y>
+          <width>55</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Capacite</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="etatParkingModif">
+        <property name="geometry">
+         <rect>
+          <x>200</x>
+          <y>160</y>
+          <width>113</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_21">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>80</y>
+          <width>55</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Identifiant</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="capaciteParkingModif">
+        <property name="geometry">
+         <rect>
+          <x>200</x>
+          <y>120</y>
+          <width>113</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="tab_4">
+       <attribute name="title">
+        <string>Afficher</string>
+       </attribute>
+       <widget class="QTableView" name="tabParking">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>80</y>
+          <width>621</width>
+          <height>251</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="identifianttri">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>30</y>
+          <width>93</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Identifiant</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="capacitetri">
+        <property name="geometry">
+         <rect>
+          <x>140</x>
+          <y>30</y>
+          <width>93</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Capacite</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="etattri">
+        <property name="geometry">
+         <rect>
+          <x>230</x>
+          <y>30</y>
+          <width>93</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Etat</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_8">
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>10</y>
+          <width>51</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Trier par</string>
+        </property>
+       </widget>
+       <widget class="Line" name="line_2">
+        <property name="geometry">
+         <rect>
+          <x>330</x>
+          <y>10</y>
+          <width>20</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="idr">
+        <property name="geometry">
+         <rect>
+          <x>350</x>
+          <y>30</y>
+          <width>91</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="rechId">
+        <property name="geometry">
+         <rect>
+          <x>350</x>
+          <y>50</y>
+          <width>91</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Par Identifiant</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="capr">
+        <property name="geometry">
+         <rect>
+          <x>450</x>
+          <y>30</y>
+          <width>91</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="rechCap">
+        <property name="geometry">
+         <rect>
+          <x>450</x>
+          <y>50</y>
+          <width>91</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Par Capacite</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="etatr">
+        <property name="geometry">
+         <rect>
+          <x>550</x>
+          <y>30</y>
+          <width>91</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="rechEt">
+        <property name="geometry">
+         <rect>
+          <x>550</x>
+          <y>50</y>
+          <width>91</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Par Etat</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_9">
+        <property name="geometry">
+         <rect>
+          <x>460</x>
+          <y>10</y>
+          <width>61</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Rechercher</string>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_6">
+     <attribute name="title">
+      <string>Place</string>
+     </attribute>
+     <widget class="QTabWidget" name="tabWidget_3">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>10</y>
+        <width>681</width>
+        <height>381</height>
+       </rect>
+      </property>
+      <property name="currentIndex">
+       <number>3</number>
+      </property>
+      <widget class="QWidget" name="tab_11">
+       <attribute name="title">
+        <string>Ajouter</string>
+       </attribute>
+       <widget class="QLineEdit" name="etatPlace">
+        <property name="geometry">
+         <rect>
+          <x>180</x>
+          <y>120</y>
+          <width>113</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="idPlace">
+        <property name="geometry">
+         <rect>
+          <x>180</x>
+          <y>80</y>
+          <width>113</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_22">
+        <property name="geometry">
+         <rect>
+          <x>80</x>
+          <y>80</y>
+          <width>55</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Identifiant</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_23">
+        <property name="geometry">
+         <rect>
+          <x>80</x>
+          <y>120</y>
+          <width>55</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Etat</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_25">
+        <property name="geometry">
+         <rect>
+          <x>170</x>
+          <y>30</y>
+          <width>101</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Ajouter une place</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="ajouterPlace">
+        <property name="geometry">
+         <rect>
+          <x>180</x>
+          <y>200</y>
+          <width>93</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Ajouter</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="idparkingPlace">
+        <property name="geometry">
+         <rect>
+          <x>180</x>
+          <y>160</y>
+          <width>113</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_24">
+        <property name="geometry">
+         <rect>
+          <x>80</x>
+          <y>160</y>
+          <width>141</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Identifiant Parking</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="tab_12">
+       <attribute name="title">
+        <string>Supprimer</string>
+       </attribute>
+       <widget class="QLabel" name="label_26">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>90</y>
+          <width>55</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Identfiant</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="idPlaceSuppr">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>90</y>
+          <width>113</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="supprimerPlace">
+        <property name="geometry">
+         <rect>
+          <x>130</x>
+          <y>150</y>
+          <width>93</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Supprimer</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_27">
+        <property name="geometry">
+         <rect>
+          <x>130</x>
+          <y>40</y>
+          <width>111</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Supprimer une place</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="tab_13">
+       <attribute name="title">
+        <string>Modifier</string>
+       </attribute>
+       <widget class="QPushButton" name="modifierPlace">
+        <property name="geometry">
+         <rect>
+          <x>170</x>
+          <y>220</y>
+          <width>93</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Modifier</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_28">
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>30</y>
+          <width>101</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Modifier une place</string>
+        </property>
+       </widget>
+       <widget class="Line" name="line_3">
+        <property name="geometry">
+         <rect>
+          <x>80</x>
+          <y>100</y>
+          <width>291</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_29">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>130</y>
+          <width>55</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Etat</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="idPlaceModif">
+        <property name="geometry">
+         <rect>
+          <x>230</x>
+          <y>80</y>
+          <width>113</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="etatPlaceModif">
+        <property name="geometry">
+         <rect>
+          <x>230</x>
+          <y>130</y>
+          <width>113</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_31">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>80</y>
+          <width>55</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Identifiant</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_30">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>170</y>
+          <width>101</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Identifiant Parking</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="idparkingPlaceModif">
+        <property name="geometry">
+         <rect>
+          <x>230</x>
+          <y>170</y>
+          <width>113</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="tab_14">
+       <attribute name="title">
+        <string>Afficher</string>
+       </attribute>
+       <widget class="QPushButton" name="identifianttripl">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>30</y>
+          <width>101</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Identifiant</string>
+        </property>
+       </widget>
+       <widget class="QTableView" name="tabPlace">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>80</y>
+          <width>621</width>
+          <height>251</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_11">
+        <property name="geometry">
+         <rect>
+          <x>420</x>
+          <y>10</y>
+          <width>61</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Rechercher</string>
+        </property>
+       </widget>
+       <widget class="Line" name="line_4">
+        <property name="geometry">
+         <rect>
+          <x>310</x>
+          <y>10</y>
+          <width>20</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="rechEtpl">
+        <property name="geometry">
+         <rect>
+          <x>440</x>
+          <y>50</y>
+          <width>91</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Par Etat</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="etattripl">
+        <property name="geometry">
+         <rect>
+          <x>110</x>
+          <y>30</y>
+          <width>101</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Etat</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_10">
+        <property name="geometry">
+         <rect>
+          <x>130</x>
+          <y>10</y>
+          <width>51</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Trier par</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="idrpl">
+        <property name="geometry">
+         <rect>
+          <x>340</x>
+          <y>30</y>
+          <width>91</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="etatrpl">
+        <property name="geometry">
+         <rect>
+          <x>440</x>
+          <y>30</y>
+          <width>91</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="rechIdpl">
+        <property name="geometry">
+         <rect>
+          <x>340</x>
+          <y>50</y>
+          <width>91</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Par Identifiant</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="idparkingtri">
+        <property name="geometry">
+         <rect>
+          <x>210</x>
+          <y>30</y>
+          <width>101</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Id Parking</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="rechIdparkingpl">
+        <property name="geometry">
+         <rect>
+          <x>540</x>
+          <y>50</y>
+          <width>91</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Par Id Parking</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="idparkingrpl">
+        <property name="geometry">
+         <rect>
+          <x>540</x>
+          <y>30</y>
+          <width>91</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_8">
+     <attribute name="title">
+      <string>Statistiques</string>
+     </attribute>
+     <widget class="QChartView" name="statBox">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>691</width>
+        <height>381</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_7">
+     <attribute name="title">
+      <string>Mail</string>
+     </attribute>
+     <widget class="QPushButton" name="envoyer">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>30</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Envoyer</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>747</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>QChartView</class>
+   <extends>QGraphicsView</extends>
+   <header>QtCharts</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
