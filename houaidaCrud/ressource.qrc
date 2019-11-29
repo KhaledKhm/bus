@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>../../Downloads/delete (1).png</file>
+        <file>../../Downloads/loupe.png</file>
+        <file>../../Downloads/pie-chart.png</file>
+        <file>../../Downloads/return.png</file>
+    </qresource>
+</RCC>
