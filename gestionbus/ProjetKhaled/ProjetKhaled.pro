@@ -18,26 +18,26 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     bus.cpp \
-    busmodificationerreur1.cpp \
     connection.cpp \
     fournisseur.cpp \
     main.cpp \
     materiel.cpp \
     projetkhaled.cpp \
-    stat.cpp
+    stat.cpp \
+    statistic.cpp
 
 HEADERS += \
     bus.h \
-    busmodificationerreur1.h \
     connection.h \
     fournisseur.h \
     materiel.h \
     projetkhaled.h \
-    stat.h
+    stat.h \
+    statistic.h
 
 FORMS += \
-    busajouterreur1.ui \
-    projetkhaled.ui
+    projetkhaled.ui \
+    statistic.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

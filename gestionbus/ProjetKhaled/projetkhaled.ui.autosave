@@ -1139,7 +1139,7 @@ QToolBox::tab:selected {
 }</string>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tab_8">
      <attribute name="title">
@@ -1457,7 +1457,7 @@ QToolBox::tab:selected {
        </rect>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tab_32">
        <attribute name="title">
@@ -1880,6 +1880,11 @@ QToolBox::tab:selected {
          </rect>
         </property>
        </widget>
+      </widget>
+      <widget class="QWidget" name="tab_2">
+       <attribute name="title">
+        <string>Page</string>
+       </attribute>
       </widget>
      </widget>
     </widget>

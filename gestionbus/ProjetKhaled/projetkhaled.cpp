@@ -4,6 +4,7 @@
 #include "fournisseur.h"
 #include "materiel.h"
 #include "stat.h"
+//#include "statistic.h"
 #include <QSqlQuery>
 #include <QDebug>
 #include <QMessageBox>
@@ -566,23 +567,11 @@ void ProjetKhaled::on_pbMaterielTri1Alpha_clicked()
     bool test = tmpMateriel.tri();
     if (test){
     ui->tabMateriel->setModel(tmpMateriel.tri());}//refresh
-    QMessageBox::information(nullptr, QObject::tr("Stat quantite terminer"),
+    QMessageBox::information(nullptr, QObject::tr("Tri terminer"),
     QObject::tr("Tri quantite terminer.\n"
     "Click ok to exit."), QMessageBox::Ok);
 }
 
-void ProjetKhaled::on_Stat_currentChanged(int index)
-{
-    if(index==2)
-    {
-        delete mainLayout;
-        mainLayout=new QVBoxLayout ;
-        mainLayout->addWidget(s.Preparechart());
-
-        ui->tabMaterielStat->setLayout(mainLayout);
-
-    }
-}
 
 
 

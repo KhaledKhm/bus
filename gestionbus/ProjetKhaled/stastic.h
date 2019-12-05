@@ -1,29 +1,26 @@
-#ifndef STAT_H
-#define STAT_H
+#ifndef STASTIC_H
+#define STASTIC_H
 
+
+#include <QDialog>
+#include <iostream>
 #include <QApplication>
-#include <QtWidgets/QMainWindow>
-#include <QDebug>
-#include <string>
-#include <QPainter>
-#include <QMessageBox>
+#include <QMainWindow>
 #include <QtCharts/QChartView>
-
+#include <QtCharts/QBarSeries>
+#include <QtCharts/QBarSet>
+#include <QtCharts/QLegend>
+#include <QtCharts/QBarCategoryAxis>
+#include <QtCharts/QHorizontalStackedBarSeries>
+#include <QtCharts/QLineSeries>
+#include <QtCharts/QCategoryAxis>
 #include <QtCharts/QPieSeries>
+#include <QtCharts/QPieSlice>
+#include <QPainter>
+#include <QSqlQuery>
 
+using namespace std;
 QT_CHARTS_USE_NAMESPACE
-
-class Stat
-{
-    QChart *chart;
-    QChartView *chartView;
-public:
-    Stat();
-    QChartView *Preparechart();
-
-};
-
-/*
 namespace Ui {
 class statistic;
 }
@@ -45,5 +42,5 @@ private slots:
 private:
     Ui::statistic *ui;
 };
-*/
-#endif // STAT_H
+
+#endif // STASTIC_H
