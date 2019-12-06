@@ -14,27 +14,32 @@ class MainWindow : public QMainWindow{
         explicit MainWindow(QWidget *parent = nullptr);
         ~MainWindow();
     private slots:
-        void on_ajouterPlace_clicked();
-        void on_supprimerPlace_clicked();
-        void on_modifierPlace_clicked();
-        void on_ajouterParking_clicked();
-        void on_supprimerParking_clicked();
-        void on_modifierParking_clicked();
-        void on_identifianttri_clicked();
-        void on_capacitetri_clicked();
-        void on_etattri_clicked();
-        void on_rechId_clicked();
-        void on_rechCap_clicked();
-        void on_rechEt_clicked();
-        void on_identifianttripl_clicked();
-        void on_etattripl_clicked();
-        void on_rechIdpl_clicked();
-        void on_rechEtpl_clicked();
-        void on_envoyer_clicked();
-        void on_idparkingtri_clicked();
-        void on_rechIdparkingpl_clicked();
-        void on_tabWidget_2_currentChanged(int index);
+        void on_ajouterPl_clicked();
+        void on_supprPl_clicked();
+        void on_modifPl_clicked();
 
+        void on_ajouterPar_clicked();
+        void on_supprPar_clicked();
+        void on_modifPar_clicked();
+
+        void on_tabWidget_currentChanged(int index); //stat
+
+        void on_triComboPar_currentIndexChanged();
+        void on_rechComboPar_currentIndexChanged();
+        void on_triComboPl_currentIndexChanged();
+        void on_rechComboPl_currentIndexChanged();
+        void on_rechTextPar_textEdited();
+        void on_rechTextPl_textEdited();
+
+        void on_envoyer_clicked();
+
+        void on_rafraichirPar_clicked();
+        void on_rafraichirPl_clicked();
+        void rafraichir();
+
+        void on_idModifComboPar_currentIndexChanged(int index);
+
+        void on_idModifComboPl_currentIndexChanged(int index);
 private:
         Ui::MainWindow *ui;
         parking tmpParking;

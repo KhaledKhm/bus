@@ -13,14 +13,8 @@ class place{
         int getIdParking();
         bool ajouter();
         bool supprimer(int);
-        bool modifier(place);
-        QSqlQueryModel * afficher();
-        QSqlQueryModel * afficherTriId();
-        QSqlQueryModel * afficherTriEt();
-        QSqlQueryModel * afficherRechId(int);
-        QSqlQueryModel * afficherRechEt(int);
-        QSqlQueryModel * afficherIdParkingEt(int);
-        QSqlQueryModel * afficherTriIdParking();
+        bool modifier(place, int);
+        QSqlQueryModel * afficher(QString, QString, QString);
     private:
         int idPlace, etatPlace, idParking;
 };

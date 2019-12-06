@@ -2,6 +2,7 @@
 #include <QString>
 #include <QSqlQueryModel>
 #include <QSqlQuery>
+#include <QMessageBox>
 #include "parking.h"
 
 parking::parking(){
@@ -38,9 +39,15 @@ bool parking::ajouter(){
     return query.exec();
 }
 
-QSqlQueryModel *  parking::afficher(){
+QSqlQueryModel *  parking::afficher(QString triCombo, QString rechCombo, QString rechText){
     QSqlQueryModel * model = new QSqlQueryModel();
-    model->setQuery("SELECT * FROM parking");
+    if(triCombo == "Identifiant"){
+        triCombo = "ID";
+    }
+    if(rechCombo == "Identifiant"){
+        rechCombo = "ID";
+    }
+    model->setQuery("SELECT * FROM parking WHERE " + rechCombo + " LIKE '%" + rechText + "%' ORDER BY " + triCombo);
     model->setHeaderData(0,Qt::Horizontal,QObject::tr("Identifiant"));
     model->setHeaderData(1,Qt::Horizontal,QObject::tr("Capacite"));
     model->setHeaderData(2,Qt::Horizontal,QObject::tr("Etat"));
@@ -52,74 +59,69 @@ bool parking::supprimer(int idParking){
     QString idParkingS = QString::number(idParking);
     query.prepare("DELETE FROM parking WHERE id = :idParkingS");
     query.bindValue(":idParkingS", idParkingS);
-    return query.exec();
+    if(query.exec()){
+        return true;
+    }else{
+        QSqlQuery q;
+        q.prepare("SELECT COUNT(*) FROM place WHERE idparking = :id");
+        q.bindValue(":id", idParkingS);
+        q.exec();
+        q.next();
+        if(q.value(0).toInt() != 0){
+            QMessageBox::critical(nullptr, QObject::tr("ERREUR DE SUPRESSION"),
+                        QObject::tr("Erreur - Le parking doit etre vide\n"
+                                    ""), QMessageBox::Cancel);
+        }
+        return false;
+    }
 }
 
-bool parking::modifier(parking pa){
+bool parking::modifier(parking pa, int idnew){
     QSqlQuery query;
+    QString idnewParkingS = QString::number(idnew);
     QString idParkingS = QString::number(pa.getId());
     QString capaciteParkingS = QString::number(pa.getCapacite());
     QString etatParkingS = QString::number(pa.getEtat());
-    query.prepare("UPDATE parking SET capacite = :capaciteParkingS, etat = :etatParkingS WHERE id = :idParkingS");
+    query.prepare("UPDATE parking SET capacite = :capaciteParkingS, etat = :etatParkingS, id = :idnewParkingS WHERE id = :idParkingS");
+    query.bindValue(":idnewParkingS", idnewParkingS);
     query.bindValue(":idParkingS", idParkingS);
     query.bindValue(":capaciteParkingS", capaciteParkingS);
     query.bindValue(":etatParkingS", etatParkingS);
-    return query.exec();
-}
-
-QSqlQueryModel * parking::afficherTriId(){
-    QSqlQueryModel * model = new QSqlQueryModel();
-    model->setQuery("SELECT * FROM parking ORDER BY id");
-    model->setHeaderData(0,Qt::Horizontal,QObject::tr("Identifiant"));
-    model->setHeaderData(1,Qt::Horizontal,QObject::tr("Capacite"));
-    model->setHeaderData(2,Qt::Horizontal,QObject::tr("Etat"));
-    return model;
-}
-
-QSqlQueryModel * parking::afficherTriCap(){
-    QSqlQueryModel * model = new QSqlQueryModel();
-    model->setQuery("SELECT * FROM parking ORDER BY capacite");
-    model->setHeaderData(0,Qt::Horizontal,QObject::tr("Identifiant"));
-    model->setHeaderData(1,Qt::Horizontal,QObject::tr("Capacite"));
-    model->setHeaderData(2,Qt::Horizontal,QObject::tr("Etat"));
-    return model;
-}
-
-QSqlQueryModel * parking::afficherTriEt(){
-    QSqlQueryModel * model = new QSqlQueryModel();
-    model->setQuery("SELECT * FROM parking ORDER BY etat");
-    model->setHeaderData(0,Qt::Horizontal,QObject::tr("Identifiant"));
-    model->setHeaderData(1,Qt::Horizontal,QObject::tr("Capacite"));
-    model->setHeaderData(2,Qt::Horizontal,QObject::tr("Etat"));
-    return model;
-}
-
-QSqlQueryModel * parking::afficherRechId(int id){
-    QSqlQueryModel * model = new QSqlQueryModel();
-    QString ids = QString::number(id);
-    model->setQuery("SELECT * FROM parking WHERE id = " + ids);
-    model->setHeaderData(0,Qt::Horizontal,QObject::tr("Identifiant"));
-    model->setHeaderData(1,Qt::Horizontal,QObject::tr("Capacite"));
-    model->setHeaderData(2,Qt::Horizontal,QObject::tr("Etat"));
-    return model;
-}
-
-QSqlQueryModel * parking::afficherRechCap(int capacite){
-    QSqlQueryModel * model = new QSqlQueryModel();
-    QString capacites = QString::number(capacite);
-    model->setQuery("SELECT * FROM parking WHERE capacite = " + capacites);
-    model->setHeaderData(0,Qt::Horizontal,QObject::tr("Identifiant"));
-    model->setHeaderData(1,Qt::Horizontal,QObject::tr("Capacite"));
-    model->setHeaderData(2,Qt::Horizontal,QObject::tr("Etat"));
-    return model;
-}
-
-QSqlQueryModel * parking::afficherRechEt(int etat){
-    QSqlQueryModel * model = new QSqlQueryModel();
-    QString etats = QString::number(etat);
-    model->setQuery("SELECT * FROM parking WHERE etat = " + etats);
-    model->setHeaderData(0,Qt::Horizontal,QObject::tr("Identifiant"));
-    model->setHeaderData(1,Qt::Horizontal,QObject::tr("Capacite"));
-    model->setHeaderData(2,Qt::Horizontal,QObject::tr("Etat"));
-    return model;
+    QSqlQuery q;
+    q.prepare("SELECT COUNT(*) FROM place WHERE idparking = :id");
+    q.bindValue(":id", idParkingS);
+    q.exec();
+    q.next();
+    if(q.value(0).toInt() > capaciteParkingS){
+        QMessageBox::critical(nullptr, QObject::tr("ERREUR DE MODIFICATION"),
+                    QObject::tr("Erreur - La nouvelle capacité du parking doit etre\n"
+                                "supérieure au nombre de places incluses dedans"), QMessageBox::Cancel);
+        return false;
+    }else{
+        if(q.value(0).toInt() == capaciteParkingS){
+            QSqlQuery qu;
+            qu.prepare("UPDATE parking SET etat = 0 WHERE id = :id");
+            qu.bindValue(":id", idParkingS);
+            qu.exec();
+        }
+    }
+    if(query.exec()){
+        return true;
+    }else{
+        QSqlQuery qurr;
+        qurr.prepare("SELECT COUNT(*) FROM place WHERE idparking = :id");
+        qurr.bindValue(":id", idParkingS);
+        qurr.exec();
+        qurr.next();
+        if(qurr.value(0).toInt() != 0){
+            QMessageBox::critical(nullptr, QObject::tr("ERREUR D'AJOUT"),
+                        QObject::tr("Erreur - Le parking n'est pas vie\n"
+                                    "Impossible de modifier son identifiant"), QMessageBox::Cancel);
+        }else{
+            QMessageBox::critical(nullptr, QObject::tr("IDENTIFIANT DUPLIQUE"),
+                        QObject::tr("Erreur - L'identifiant du parking doit etre unique\n"
+                                    ""), QMessageBox::Cancel);
+        }
+        return false;
+    }
 }

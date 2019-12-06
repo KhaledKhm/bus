@@ -13,14 +13,8 @@ class parking{
         int getEtat();
         bool ajouter();
         bool supprimer(int);
-        bool modifier(parking);
-        QSqlQueryModel * afficher();
-        QSqlQueryModel * afficherTriId();
-        QSqlQueryModel * afficherTriCap();
-        QSqlQueryModel * afficherTriEt();
-        QSqlQueryModel * afficherRechId(int);
-        QSqlQueryModel * afficherRechCap(int);
-        QSqlQueryModel * afficherRechEt(int);
+        bool modifier(parking, int);
+        QSqlQueryModel * afficher(QString, QString, QString);
     private:
         int idParking, capaciteParking, etatParking;
 };

@@ -4,6 +4,9 @@
 #include "parking.h"
 #include "place.h"
 #include <QDebug>
+#include <QSqlQueryModel>
+#include <QSqlQuery>
+#include <QString>
 #include "mailing/SmtpMime"
 
 
@@ -12,236 +15,172 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    ui->tabParking->setModel(tmpParking.afficher());
-    ui->tabPlace->setModel(tmpPlace.afficher());
+    on_rafraichirPl_clicked();
+    rafraichir();
 }
 
 MainWindow::~MainWindow(){
     delete ui;
 }
 
-void MainWindow::on_ajouterParking_clicked(){
+void MainWindow::rafraichir(){
+    ui->tabParking->setModel(tmpParking.afficher(ui->triComboPar->currentText(), ui->rechComboPar->currentText(), ui->rechTextPar->text()));
+    QSqlQuery q;
+    QSqlQueryModel* model = new QSqlQueryModel();
+    model->setQuery("SELECT id FROM parking");
+    ui->idSupprComboPar->setModel(model);
+    ui->idModifComboPar->setModel(model);
+    q.prepare("SELECT * FROM parking WHERE id = :col");
+    q.bindValue(":col", ui->idModifComboPar->currentText());
+    if(q.exec()){
+        while(q.next()){
+            ui->idModifPar->setText(q.value(0).toString());
+            ui->capaciteModifPar->setText(q.value(1).toString());
+            ui->etatModifComboPar->setCurrentIndex(q.value(2).toInt());
+        }
+    }
+    ui->tabParking->setModel(tmpParking.afficher(ui->triComboPar->currentText(), ui->rechComboPar->currentText(), ui->rechTextPar->text()));
+}
+
+void MainWindow::on_ajouterPar_clicked(){
     bool control = true;
-    int idParking = ui->idParking->text().toInt();
+    int idParking = ui->idPar->text().toInt();
     if(idParking < 0 || idParking > 99999){
         control = false;
+        QMessageBox::critical(nullptr, QObject::tr("CONTROLE DE SAISIE"),
+                    QObject::tr("Erreur - l'identifiant doit etre compris\n"
+                                "entre 0 et 99999"), QMessageBox::Cancel);
     }
-    int capaciteParking = ui->capaciteParking->text().toInt();
+    int capaciteParking = ui->capacitePar->text().toInt();
     if(capaciteParking < 0 || capaciteParking > 99999){
         control = false;
-    }
-    int etatParking = ui->etatParking->text().toInt();
-    if(etatParking != 0 && etatParking != 1){
-        control = false;
-    }
+        QMessageBox::critical(nullptr, QObject::tr("CONTROLE DE SAISIE"),
+                    QObject::tr("Erreur - la capacite doit etre comprise\n"
+                                "entre 0 et 99999"), QMessageBox::Cancel);}
+    int etatParking = ui->etatComboPar->currentText().toInt();
     if(control){
         parking pa(idParking, capaciteParking, etatParking);
         bool test = pa.ajouter();
         if(test){
-            ui->tabParking->setModel(tmpParking.afficher());
-            qDebug() <<"Parking ajoute";
+            ui->tabParking->setModel(tmpParking.afficher(ui->triComboPar->currentText(), ui->rechComboPar->currentText(), ui->rechTextPar->text()));
+            rafraichir();
+            QMessageBox::information(nullptr, QObject::tr("SUCCES D'AJOUT"),
+                        QObject::tr("SUCCES - Le parking vient d'etre ajouté\n"
+                                    ""), QMessageBox::Close);
         }else{
-           qDebug() <<"Erreur d'ajout de parking";
+            QMessageBox::critical(nullptr, QObject::tr("ERREUR D'AJOUT"),
+                        QObject::tr("Erreur - L'ajout du parking n'a pas été éffectué\n"
+                                    ""), QMessageBox::Cancel);
         }
-     }else{
-        qDebug() << "Erreur de controle de saisie";
-        QMessageBox::critical(nullptr, QObject::tr("Erreur"),
-                    QObject::tr("Control de saisie\n"
-                                ""), QMessageBox::Cancel);
-    }
+     }
 }
 
-void MainWindow::on_ajouterPlace_clicked(){
+void MainWindow::on_ajouterPl_clicked(){
     int control= true;
-    int idPlace = ui->idPlace->text().toInt();
+    int idPlace = ui->idPl->text().toInt();
     if (idPlace <0 || idPlace > 99999){
         control = false;
+        QMessageBox::critical(nullptr, QObject::tr("CONTROLE DE SAISIE"),
+                    QObject::tr("Erreur - l'identifiant de la place doit etre compris\n"
+                                "entre 0 et 99999"), QMessageBox::Cancel);
     }
-    int etatPlace = ui->etatPlace->text().toInt();
-    if (etatPlace !=0 && etatPlace !=1){
-        control = false;
-    }
-    int idParking = ui->idparkingPlace->text().toInt();
-    if (idParking < 0 || idParking > 99999){
-        control = false;
-    }
+    int etatPlace = ui->etatComboPl->currentText().toInt();
+    int idParking = ui->idparkingComboPl->currentText().toInt();
     if(control){
          place pl(idPlace, etatPlace, idParking);
         bool test = pl.ajouter();
         if(test){
-        ui->tabPlace->setModel(tmpPlace.afficher());
-           qDebug() <<"Place ajoute";
-        }else{
-           qDebug() <<"Erreur d'ajout de place";
+            on_rafraichirPl_clicked();
+            QMessageBox::information(nullptr, QObject::tr("SUCCES D'AJOUT"),
+                        QObject::tr("SUCCES - place ajoutée avec succés\n"
+                                    ""), QMessageBox::Close);
         }
-    }else{
-        qDebug() << "Erreur de controle de saisie";
-        QMessageBox::critical(nullptr, QObject::tr("Erreur"),
-                    QObject::tr("Control de saisie\n"
-                                ""), QMessageBox::Cancel);
     }
 }
 
-void MainWindow::on_supprimerParking_clicked(){
-    bool control = true;
-    int idParkingSuppr = ui->idParkingSuppr->text().toInt();
-    if (idParkingSuppr <0 || idParkingSuppr > 99999){
-        control = false;}
-    if(control){
-        bool test = tmpParking.supprimer(idParkingSuppr);
-        if(test){
-            ui->tabParking->setModel(tmpParking.afficher());
-        }
-    }else{
-        qDebug() << "Erreur de controle de saisie";
-        QMessageBox::critical(nullptr, QObject::tr("Erreur"),
-                    QObject::tr("Control de saisie\n"
-                                ""), QMessageBox::Cancel);
-    }
-}
-
-void MainWindow::on_supprimerPlace_clicked(){
-    bool control = true;
-    int idPlaceSuppr = ui->idPlaceSuppr->text().toInt();
-    if (idPlaceSuppr <0 || idPlaceSuppr > 99999){
-        control = false;}
-    if(control){
-    bool test = tmpPlace.supprimer(idPlaceSuppr);
+void MainWindow::on_supprPar_clicked(){
+    bool test = tmpParking.supprimer(ui->idSupprComboPar->currentText().toInt());
     if(test){
-        ui->tabPlace->setModel(tmpPlace.afficher());
+        rafraichir();
+        QMessageBox::information(nullptr, QObject::tr("SUCCES DE SUPRESSION"),
+                    QObject::tr("Succes - La supression du parking a été\n"
+                                "éffectuée avec succes"), QMessageBox::Close);
     }
-}else{
-qDebug() << "Erreur de controle de saisie";
-QMessageBox::critical(nullptr, QObject::tr("Erreur"),
-            QObject::tr("Control de saisie\n"
-                        ""), QMessageBox::Cancel);
-}
 }
 
-void MainWindow::on_modifierParking_clicked(){
+void MainWindow::on_supprPl_clicked(){
+    bool test = tmpPlace.supprimer(ui->idSupprComboPl->currentText().toInt());
+    if(test){
+        QMessageBox::information(nullptr, QObject::tr("SUCCES DE SUPRESSION"),
+                    QObject::tr("Succes - La supression de la place a été\n"
+                                "éffectuée avec succes"), QMessageBox::Close);
+        on_rafraichirPl_clicked();
+    }else{
+        QMessageBox::critical(nullptr, QObject::tr("ERREUR DE SUPRESSION"),
+                    QObject::tr("Erreur - La suppression n'a pas été effectuée\n"
+                                ""), QMessageBox::Cancel);
+    }
+}
+
+void MainWindow::on_modifPar_clicked(){
     bool control=true;
-    int idParking = ui->idParkingModif->text().toInt();
-    if (idParking <0 || idParking > 99999){
-        control = false;}
-    int capaciteParking = ui->capaciteParkingModif->text().toInt();
-    if (capaciteParking <0 || capaciteParking > 99999){
-        control = false;}
-    int etatParking = ui->etatParkingModif->text().toInt();
-    if (etatParking != 0 && etatParking != 1){
+    int id = ui->idModifComboPar->currentText().toInt();
+    int idnew = ui->idModifPar->text().toInt();
+    if (idnew <0 || idnew > 99999){
         control = false;
-    }
-    parking pa(idParking, capaciteParking, etatParking);
+        QMessageBox::critical(nullptr, QObject::tr("CONTROLE DE SAISIE"),
+                    QObject::tr("Erreur - l'identifiant parking doit etre compris\n"
+                                "entre 0 et 99999"), QMessageBox::Cancel);}
+    int capacite = ui->capaciteModifPar->text().toInt();
+    if (capacite <0 || capacite > 99999){
+        control = false;
+        QMessageBox::critical(nullptr, QObject::tr("CONTROLE DE SAISIE"),
+                    QObject::tr("Erreur - la capacite doit etre comprise\n"
+                                "entre 0 et 99999"), QMessageBox::Cancel);}
+    int etat = ui->etatModifComboPar->currentText().toInt();
+    parking pa(id, capacite, etat);
     if(control){
-    bool test = tmpParking.modifier(pa);
-    if(test){
-        ui->tabParking->setModel(tmpParking.afficher());
+        bool test = tmpParking.modifier(pa, idnew);
+        if(test){
+            QMessageBox::information(nullptr, QObject::tr("SUCCES DE MODIFICATION"),
+                        QObject::tr("SUCCES - La modification à été effectuée\n"
+                                    "avec succès"), QMessageBox::Cancel);
+            QSqlQuery q;
+            q.prepare("SELECT * FROM parking WHERE id = :col");
+            q.bindValue(":col", ui->idModifComboPar->currentText());
+            if(q.exec()){
+                while(q.next()){
+                    ui->idModifPar->setText(q.value(0).toString());
+                    ui->capaciteModifPar->setText(q.value(1).toString());
+                    ui->etatModifComboPar->setCurrentIndex(q.value(2).toInt());
+                }
+            }
+            ui->tabParking->setModel(tmpParking.afficher(ui->triComboPar->currentText(), ui->rechComboPar->currentText(), ui->rechTextPar->text()));        }
     }
-    }else{
-        qDebug() << "Erreur de controle de saisie";
-        QMessageBox::critical(nullptr, QObject::tr("Erreur"),
-                    QObject::tr("Control de saisie\n"
-                                ""), QMessageBox::Cancel);
-}
 }
 
-void MainWindow::on_modifierPlace_clicked(){
+void MainWindow::on_modifPl_clicked(){
     bool control = true;
-    int idPlace = ui->idPlaceModif->text().toInt();
-    if (idPlace <0 || idPlace > 99999){
-        control = false;}
-    int etatPlace = ui->etatPlaceModif->text().toInt();
-    if (etatPlace != 0 && etatPlace !=1 ){
-        control = false;}
-    int idparkingPlace = ui->idparkingPlaceModif->text().toInt();
-    if (idparkingPlace < 0 || idparkingPlace > 99999){
+    int id = ui->idModifComboPl->currentText().toInt();
+    int idnew = ui->idModifPl->text().toInt();
+    if (idnew <0 || idnew > 99999){
         control = false;
+        QMessageBox::critical(nullptr, QObject::tr("CONTROLE DE SAISIE"),
+                    QObject::tr("Erreur - l'identifiant place doit etre compris\n"
+                                "entre 0 et 99999"), QMessageBox::Cancel);
     }
-    place pl(idPlace, etatPlace, idparkingPlace);
-    if (control){
-    bool test = tmpPlace.modifier(pl);
+    int etat = ui->etatModifComboPl->currentText().toInt();
+    int idparking = ui->idparkingModifComboPl->currentText().toInt();
+    place pl(id, etat, idparking);
+    if(control){
+    bool test = tmpPlace.modifier(pl, idnew);
     if(test){
-        ui->tabPlace->setModel(tmpPlace.afficher());
-     }
-   }else{
-        qDebug() << "Erreur de controle de saisie";
-        QMessageBox::critical(nullptr, QObject::tr("Erreur"),
-                    QObject::tr("Control de saisie\n"
-                                ""), QMessageBox::Cancel);
+        QMessageBox::information(nullptr, QObject::tr("SUCCES DE MODIFICATION"),
+                    QObject::tr("SUCCES - La modification à été effectuée\n"
+                                "avec succès"), QMessageBox::Cancel);
+        on_rafraichirPl_clicked();
     }
-}
-
-void MainWindow::on_identifianttri_clicked(){
-    ui->tabParking->setModel(tmpParking.afficherTriId());
-}
-
-void MainWindow::on_capacitetri_clicked(){
-    ui->tabParking->setModel(tmpParking.afficherTriCap());
-}
-
-void MainWindow::on_etattri_clicked(){
-    ui->tabParking->setModel(tmpParking.afficherTriEt());
-}
-
-
-void MainWindow::on_rechId_clicked(){
-    bool control = true;
-    int id = ui->idr->text().toInt();
-    if (id <0 || id > 99999){
-        control = false;}
-    if (control){
-        ui->tabParking->setModel(tmpParking.afficherRechId(id));
-    }
-}
-
-void MainWindow::on_rechCap_clicked(){
-    bool control = true;
-    int cap = ui->capr->text().toInt();
-    if (cap <0 || cap > 99999){
-        control = false;}
-    if (control){
-    ui->tabParking->setModel(tmpParking.afficherRechCap(cap));
-    }
-}
-
-void MainWindow::on_rechEt_clicked(){
-    bool control = true;
-    int rech = ui->etatr->text().toInt();
-    if (rech !=0 && rech !=1 ){
-        control = false;}
-    if (control){
-    ui->tabParking->setModel(tmpParking.afficherRechEt(rech));
-    }
-}
-void MainWindow::on_identifianttripl_clicked(){
-    ui->tabPlace->setModel(tmpPlace.afficherTriId());
-}
-
-void MainWindow::on_etattripl_clicked(){
-    ui->tabPlace->setModel(tmpPlace.afficherTriEt());
-}
-
-void MainWindow::on_rechIdpl_clicked(){
-    int id = ui->idrpl->text().toInt();
-    ui->tabPlace->setModel(tmpPlace.afficherRechId(id));
-}
-
-void MainWindow::on_rechEtpl_clicked(){
-    int rech = ui->etatrpl->text().toInt();
-    ui->tabPlace->setModel(tmpPlace.afficherRechEt(rech));
-}
-
-void MainWindow::on_rechIdparkingpl_clicked(){
-    bool control = true;
-    int rech = ui->idparkingrpl->text().toInt();
-    if (rech != 0 && rech !=1){
-        control = false;}
-    if (control){
-        ui->tabParking->setModel(tmpPlace.afficherIdParkingEt(rech));
-    }
-}
-
-void MainWindow::on_idparkingtri_clicked(){
-    ui->tabPlace->setModel(tmpPlace.afficherTriIdParking());
+   }
 }
 
 void MainWindow::on_envoyer_clicked(){
@@ -265,17 +204,17 @@ void MainWindow::on_envoyer_clicked(){
     smtp.quit();
 }
 
-void MainWindow::on_tabWidget_2_currentChanged(int index){
+void MainWindow::on_tabWidget_currentChanged(int index){
     if(index == 2){
         QSqlQuery query, queryCount, queryTotal;
         QBarSet* tab[50];
         QBarSeries * series = new QBarSeries();
         QChart * chart;
         QStringList categories;
-        queryTotal.prepare("SELECT COUNT(*) FROM place WHERE etat = 0"); //Trouver le nombre de places totals occupées
+        queryTotal.prepare("SELECT COUNT(*) FROM place WHERE etat = 0"); //Trouver le nombre de places totales occupées
         queryTotal.exec(); // executer
         while(queryTotal.next()){ //parcourir les resultats de la requete
-            query.prepare("SELECT id FROM parking"); //recevoir tout les id des parking
+            query.prepare("SELECT id FROM parking"); //recevoir tous les ids des parking
             query.exec(); //executer
             int numParking = 0, nb;
             while(query.next()){ //parcourir les resultats (les id 1 par 1)
@@ -283,8 +222,9 @@ void MainWindow::on_tabWidget_2_currentChanged(int index){
                 queryCount.bindValue(":id", query.value(0).toString()); //associer la valeur au parametre
                 queryCount.exec();
                 while(queryCount.next()){
-                    tab[numParking] = new QBarSet(query.value(0).toString());
                     nb = queryCount.value(0).toInt() * 100 / queryTotal.value(0).toInt(); //calcul de pourcentage
+                    QString nbS = QString::number(nb);
+                    tab[numParking] = new QBarSet("Parking Numero " + query.value(0).toString() + " (" + nbS + "%)");
                     *tab[numParking] << nb;
                     series->append(tab[numParking]);
                     numParking++;
@@ -311,5 +251,85 @@ void MainWindow::on_tabWidget_2_currentChanged(int index){
         pal.setColor(QPalette::WindowText,QRgb(0x121212));
         qApp->setPalette(pal);
         ui->statBox->setChart(chart);
+    }
+}
+
+void MainWindow::on_triComboPar_currentIndexChanged(){
+    ui->tabParking->setModel(tmpParking.afficher(ui->triComboPar->currentText(), ui->rechComboPar->currentText(), ui->rechTextPar->text()));
+}
+
+void MainWindow::on_rechComboPar_currentIndexChanged(){
+    ui->tabParking->setModel(tmpParking.afficher(ui->triComboPar->currentText(), ui->rechComboPar->currentText(), ui->rechTextPar->text()));
+}
+
+void MainWindow::on_triComboPl_currentIndexChanged(){
+    ui->tabPlace->setModel(tmpPlace.afficher(ui->triComboPl->currentText(), ui->rechComboPl->currentText(), ui->rechTextPl->text()));
+}
+
+void MainWindow::on_rechComboPl_currentIndexChanged(){
+    ui->tabPlace->setModel(tmpPlace.afficher(ui->triComboPl->currentText(), ui->rechComboPl->currentText(), ui->rechTextPl->text()));
+}
+
+void MainWindow::on_rechTextPar_textEdited(){
+    ui->tabParking->setModel(tmpParking.afficher(ui->triComboPar->currentText(), ui->rechComboPar->currentText(), ui->rechTextPar->text()));
+}
+
+void MainWindow::on_rechTextPl_textEdited(){
+    ui->tabPlace->setModel(tmpPlace.afficher(ui->triComboPl->currentText(), ui->rechComboPl->currentText(), ui->rechTextPl->text()));
+}
+
+void MainWindow::on_rafraichirPar_clicked(){
+    rafraichir();
+}
+
+void MainWindow::on_rafraichirPl_clicked(){
+    ui->tabPlace->setModel(tmpPlace.afficher(ui->triComboPl->currentText(), ui->rechComboPl->currentText(), ui->rechTextPl->text()));
+    QSqlQuery q;
+    QSqlQueryModel* model = new QSqlQueryModel();
+    model->setQuery("SELECT id FROM place");
+    ui->idSupprComboPl->setModel(model);
+    ui->idModifComboPl->setModel(model);
+    QSqlQueryModel* model2 = new QSqlQueryModel();
+    model2->setQuery("SELECT id FROM parking");
+    ui->idparkingComboPl->setModel(model2);
+    ui->idparkingModifComboPl->setModel(model2);
+
+        q.prepare("SELECT * FROM place WHERE id = :col");
+        q.bindValue(":col", ui->idModifComboPl->currentText());
+        if(q.exec()){
+            while(q.next()){
+                ui->idModifPl->setText(q.value(0).toString());
+                ui->etatModifComboPl->setCurrentIndex(q.value(1).toInt());
+                ui->idparkingModifComboPl->setCurrentText(q.value(2).toString());
+            }
+        }
+    ui->tabPlace->setModel(tmpPlace.afficher(ui->triComboPl->currentText(), ui->rechComboPl->currentText(), ui->rechTextPl->text()));
+}
+
+
+void MainWindow::on_idModifComboPar_currentIndexChanged(int index)
+{
+    QSqlQuery q;
+    q.prepare("SELECT * FROM parking WHERE id = :col");
+    q.bindValue(":col", ui->idModifComboPar->currentText());
+    if(q.exec()){
+        while(q.next()){
+            ui->idModifPar->setText(q.value(0).toString());
+            ui->capaciteModifPar->setText(q.value(1).toString());
+            ui->etatModifComboPar->setCurrentIndex(q.value(2).toInt());
+        }
+    }
+}
+
+void MainWindow::on_idModifComboPl_currentIndexChanged(int index){
+    QSqlQuery q;
+    q.prepare("SELECT * FROM place WHERE id = :col");
+    q.bindValue(":col", ui->idModifComboPl->currentText());
+    if(q.exec()){
+        while(q.next()){
+            ui->idModifPl->setText(q.value(0).toString());
+            ui->etatModifComboPl->setCurrentIndex(q.value(1).toInt());
+            ui->idparkingModifComboPl->setCurrentText(q.value(2).toString());
+        }
     }
 }
