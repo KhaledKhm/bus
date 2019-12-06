@@ -33,6 +33,9 @@ public:
     int Statistique_partie1() ;
     int Statistique_partie2() ;
     void paintEvent(QPaintEvent *) ;
+private slots:
+    void on_retour_clicked();
+
 private:
     Ui::statistic *ui;
 };

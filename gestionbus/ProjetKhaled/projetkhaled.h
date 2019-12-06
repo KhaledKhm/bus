@@ -7,6 +7,7 @@
 #include "fournisseur.h"
 #include "materiel.h"
 #include "stat.h"
+#include "statistic.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class ProjetKhaled; }
@@ -68,6 +69,10 @@ private slots:
 
     void on_pbMaterielTri1Alpha_3_clicked();
 
+    void on_pbStat_clicked();
+
+    void on_comboBox_currentIndexChanged();
+
 private:
     Ui::ProjetKhaled *ui;
     bus tmpBus;
@@ -75,7 +80,7 @@ private:
     materiel tmpMateriel;
 
     QVBoxLayout * mainLayout;
-       Stat s;
+       statistic s;
 
 };
 

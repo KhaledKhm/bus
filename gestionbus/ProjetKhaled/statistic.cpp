@@ -12,17 +12,17 @@ statistic::~statistic()
 {
     delete ui;
 }
-/*
+
 void statistic::on_retour_clicked()
 {
     hide();
-}*/
+}
 int statistic::Statistique_partie1()
 {
 
     QSqlQuery query;
     int count=0 ;
-    QSqlQuery requete("select * from materiel where quantite betweeb 1 and 10") ;
+    QSqlQuery requete("select * from bus where nbPlace=30") ;
     while(requete.next())
     {
             count++ ;
@@ -38,7 +38,7 @@ int statistic::Statistique_partie2()
 {
     QSqlQuery query;
     int count=0 ;
-    QSqlQuery requete("select * materiel where quantite betweeb 11 and 50") ;
+    QSqlQuery requete("select * from bus where nbPlace=50") ;
     while(requete.next())
     {
             count++ ;
@@ -74,14 +74,14 @@ void statistic::paintEvent(QPaintEvent *)
         float z  ;
         z=360-(x+y) ;
     QPainter painter(this);
-    QRectF size=QRectF(50,50,this->width()-100,this->width()-100);
+    QRectF size=QRectF(50,50,this->width()-500,this->width()-500);
 
     painter.setBrush(Qt::blue);
     painter.drawPie(size,0,16*x);
-    ui->label->setText("materiel entre 1 et 10") ;
-    painter.setBrush(Qt::red);
+    ui->label->setText("Bus de 30 places") ;
+    painter.setBrush(Qt::cyan);
     painter.drawPie(size,16*x,16*y);
-    ui->label_2->setText("materiel entre 11 et 50") ;
+    ui->label_2->setText("Bus de 50 places") ;
     /*painter.setBrush(Qt::green);
     painter.drawPie(size,16*(y+x),16*m);
     ui->label_3->setText("ouvrier") ;

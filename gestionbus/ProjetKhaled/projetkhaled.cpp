@@ -24,9 +24,9 @@ ProjetKhaled::ProjetKhaled(QWidget *parent)
     ui->tabFournisseur->setModel(tmpFournisseur.afficherFournisseur());
     ui->tabMateriel->setModel(tmpMateriel.afficherMateriel());
 
-    mainLayout=new QVBoxLayout;
-    mainLayout->addWidget(s.Preparechart());
-    ui->tabMaterielStat->setLayout(mainLayout);
+ //   mainLayout=new QVBoxLayout;
+  //  mainLayout->addWidget(s.Preparechart());
+   // ui->tabMaterielStat->setLayout(mainLayout);
 
 }
 
@@ -133,7 +133,7 @@ void ProjetKhaled::on_ConfirmerModifBus2_clicked()
                                 "Click Cancel to exit."), QMessageBox::Cancel);
     }
     QString destination=ui->LEDestinationModif2->text();
-    {
+   if(destination=="") {
             control = false;
             QMessageBox::critical(nullptr, QObject::tr("Modif destination bus"),
                         QObject::tr("Destination vide!\n"
@@ -364,7 +364,10 @@ void ProjetKhaled::on_pbFournisseurTri1Alpha_clicked()
     "Click ok to exit."), QMessageBox::Ok);
 }
 
-
+void ProjetKhaled::on_comboBox_currentIndexChanged()
+{
+     ui->tabFournisseur->setModel(tmpFournisseur.triFournisseur());
+}
 
 //##############################################################################################################
 //###################################################Materiel###################################################
@@ -587,3 +590,11 @@ void ProjetKhaled::on_pbMaterielTri1Alpha_3_clicked()
     QObject::tr("Tri quantite terminer.\n"
     "Click ok to exit."), QMessageBox::Ok);
 }
+
+void ProjetKhaled::on_pbStat_clicked()
+{
+    statistic s;
+    s.exec();
+}
+
+
