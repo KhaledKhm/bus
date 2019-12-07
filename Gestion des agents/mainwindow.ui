@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1078</width>
+    <height>825</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Gestion des Clients</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QTabWidget" name="tabAgent">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>20</y>
+      <width>881</width>
+      <height>691</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>UpArrowCursor</cursorShape>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="tab">
+     <attribute name="title">
+      <string>Gestion des agents</string>
+     </attribute>
+     <widget class="QWidget" name="layoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>10</y>
+        <width>871</width>
+        <height>331</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QGroupBox" name="groupBox">
+         <property name="title">
+          <string>Ajouter Agent</string>
+         </property>
+         <widget class="QPushButton" name="AjoutA">
+          <property name="geometry">
+           <rect>
+            <x>110</x>
+            <y>290</y>
+            <width>93</width>
+            <height>28</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>AJOUTER</string>
+          </property>
+         </widget>
+         <widget class="QWidget" name="layoutWidget">
+          <property name="geometry">
+           <rect>
+            <x>6</x>
+            <y>53</y>
+            <width>111</width>
+            <height>162</height>
+           </rect>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout">
+           <item>
+            <widget class="QLabel" name="CINA">
+             <property name="text">
+              <string>CIN</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="NomA">
+             <property name="text">
+              <string>Nom</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="PrenomA">
+             <property name="text">
+              <string>Prénom</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="DateNaissA">
+             <property name="text">
+              <string>Date de naissance</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="SexeA">
+             <property name="text">
+              <string>Sexe</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="SalaireA">
+             <property name="text">
+              <string>Salaire</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="layoutWidget">
+          <property name="geometry">
+           <rect>
+            <x>124</x>
+            <y>50</y>
+            <width>152</width>
+            <height>171</height>
+           </rect>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_2">
+           <item>
+            <widget class="QLineEdit" name="LECIN"/>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="LEajoutnom"/>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="LEajoutprenom"/>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="LEdatenaiss"/>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_5">
+             <item>
+              <widget class="QComboBox" name="choixsex">
+               <item>
+                <property name="text">
+                 <string>&lt;Choix&gt;</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Homme</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Femme</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Autre</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="LEsalaire"/>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="layoutWidget">
+          <property name="geometry">
+           <rect>
+            <x>80</x>
+            <y>240</y>
+            <width>119</width>
+            <height>24</height>
+           </rect>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <item>
+            <widget class="QLabel" name="ID">
+             <property name="text">
+              <string>ID -&gt;</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="LEID"/>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox_2">
+         <property name="title">
+          <string>Supprimer Agent</string>
+         </property>
+         <widget class="QPushButton" name="SuppA">
+          <property name="geometry">
+           <rect>
+            <x>90</x>
+            <y>270</y>
+            <width>93</width>
+            <height>28</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Supprimer</string>
+          </property>
+         </widget>
+         <widget class="QWidget" name="layoutWidget">
+          <property name="geometry">
+           <rect>
+            <x>14</x>
+            <y>130</y>
+            <width>230</width>
+            <height>24</height>
+           </rect>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_3">
+           <item>
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string>CIN de l'agent </string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="CinSupp"/>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox_3">
+         <property name="title">
+          <string>Modifier Agent</string>
+         </property>
+         <widget class="QWidget" name="layoutWidget_2">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>60</y>
+            <width>111</width>
+            <height>161</height>
+           </rect>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_6">
+           <item>
+            <widget class="QLabel" name="label_2">
+             <property name="text">
+              <string>CIN </string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="NomA_3">
+             <property name="text">
+              <string>Nom</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="PrenomA_3">
+             <property name="text">
+              <string>Prénom</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="DateNaissA_3">
+             <property name="text">
+              <string>Date de naissance</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="SexeA_3">
+             <property name="text">
+              <string>Sexe</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="SalaireA_3">
+             <property name="text">
+              <string>Salaire</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="layoutWidget">
+          <property name="geometry">
+           <rect>
+            <x>128</x>
+            <y>57</y>
+            <width>141</width>
+            <height>171</height>
+           </rect>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_5">
+           <item>
+            <widget class="QLineEdit" name="LEMODIFCIN"/>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="LEmodifnom"/>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="LEmodifprenom"/>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="LEmodifdatenaiss"/>
+           </item>
+           <item>
+            <widget class="QComboBox" name="choixsex_modif">
+             <item>
+              <property name="text">
+               <string>&lt;Choix&gt;</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Homme</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Femme</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Autre</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="LEmodifsalaire"/>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QPushButton" name="ModifA">
+          <property name="geometry">
+           <rect>
+            <x>100</x>
+            <y>270</y>
+            <width>93</width>
+            <height>28</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Modifier</string>
+          </property>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="layoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>350</y>
+        <width>841</width>
+        <height>301</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="2" column="1">
+        <widget class="QPushButton" name="Rechercher">
+         <property name="text">
+          <string>Rechercher</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QPushButton" name="Satatistique">
+         <property name="text">
+          <string>Statistique </string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="3">
+        <widget class="QPushButton" name="imprimer">
+         <property name="text">
+          <string>Imprimmer</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0" colspan="4">
+        <widget class="QTableView" name="tableView"/>
+       </item>
+       <item row="0" column="2">
+        <widget class="QPushButton" name="Actualiser">
+         <property name="text">
+          <string>Actualiser</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QPushButton" name="trier">
+         <property name="text">
+          <string>Trier les agents </string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="2">
+        <widget class="QPushButton" name="pushButton">
+         <property name="text">
+          <string>Affecter</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_2">
+     <attribute name="title">
+      <string>Gestion des services</string>
+     </attribute>
+    </widget>
+    <widget class="QWidget" name="tab_3">
+     <attribute name="title">
+      <string>Statistique</string>
+     </attribute>
+     <widget class="QChartView" name="graphicsView">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>200</y>
+        <width>591</width>
+        <height>341</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_2">
+      <property name="geometry">
+       <rect>
+        <x>380</x>
+        <y>100</y>
+        <width>93</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>statistique</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1078</width>
+     <height>26</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>QChartView</class>
+   <extends>QGraphicsView</extends>
+   <header>Qtcharts</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
