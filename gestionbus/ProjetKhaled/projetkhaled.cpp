@@ -3,12 +3,14 @@
 #include "bus.h"
 #include "fournisseur.h"
 #include "materiel.h"
-#include "stat.h"
+//#include "stat.h"
 //#include "statistic.h"
 #include <QSqlQuery>
 #include <QDebug>
 #include <QMessageBox>
 #include <QtCharts/QPieSlice>
+#include <QtPrintSupport>
+
 //#include <QMediaPlayer>
 
 
@@ -22,7 +24,10 @@ ProjetKhaled::ProjetKhaled(QWidget *parent)
     ui->setupUi(this);
     ui->tabBus->setModel(tmpBus.afficher());
     ui->tabFournisseur->setModel(tmpFournisseur.afficherFournisseur());
+    ui->cbModifFourni->setModel(tmpFournisseur.comboxidfournis());
+    ui->cbAjoutMat->setModel(tmpMateriel.comboxidfournisMat());
     ui->tabMateriel->setModel(tmpMateriel.afficherMateriel());
+
 
  //   mainLayout=new QVBoxLayout;
   //  mainLayout->addWidget(s.Preparechart());
@@ -247,6 +252,26 @@ void ProjetKhaled::on_pbBusTri1Alpha_2_clicked()
     "Click ok to exit."), QMessageBox::Ok);
 }
 
+void ProjetKhaled::on_cbTriBus_currentTextChanged(const QString &arg1)
+{
+    if(arg1 == "Immatricule par ordre Croissant"){
+
+         ui->tabBus->setModel(tmpBus.triBus());}
+            else if(arg1 =="Immatricule par ordre Decroissant"){
+       ui->tabBus->setModel(tmpBus.triBus2());
+    }
+            else if(arg1 =="Nombre de place en ordre Croissant"){
+                ui->tabBus->setModel(tmpBus.triBus3());
+    }
+            else if(arg1 =="Nombre de place en ordre Decroissant"){
+                 ui->tabBus->setModel(tmpBus.triBus4());
+}
+            else if(arg1 =="Destination par ordre Croissant"){
+                ui->tabBus->setModel(tmpBus.triBus5());}
+            else if(arg1 =="Destination par ordre Decroissant"){
+                ui->tabBus->setModel(tmpBus.triBus6());
+        }
+    }
 
 /*#################################################################################################################
 ###################################################Fournisseur###################################################
@@ -285,13 +310,18 @@ void ProjetKhaled::on_pbAjouterFournisseur_clicked()
 
 void ProjetKhaled::on_pbModifierFournisseur_clicked()
 {   bool control=true;
-    int idFournisseur=ui->LEIDFournisseurModif2_2->text().toInt();
+
+    //QSqlQueryModel * model = new QSqlQueryModel();
+   // model->setQuery("select id from fournisseur");
+
+    int idFournisseur=ui->cbModifFourni->currentText().toInt();
+    /*  int idFournisseur=ui->LEIDFournisseurModif2_2->text().toInt();
     if(idFournisseur<1 ||idFournisseur>9999999){
         control = false;
         QMessageBox::critical(nullptr, QObject::tr("Modif id fournisseur"),
                     QObject::tr("ID invalid ou n'existe pas, verifier l'affichage!\n"
                                 "Click Cancel to exit."), QMessageBox::Cancel);}
-
+*/
     QString nomFournisseur=ui->LENomFournisseurModif2->text();
     if(nomFournisseur==""){
         control = false;
@@ -299,6 +329,7 @@ void ProjetKhaled::on_pbModifierFournisseur_clicked()
                     QObject::tr("Nom vide ou invalide\n"
                                 "Click Cancel to exit."), QMessageBox::Cancel);}
     if (control){
+
 
     fournisseur f(idFournisseur,nomFournisseur);
     bool test=f.modifierFournisseur(idFournisseur);
@@ -312,7 +343,9 @@ void ProjetKhaled::on_pbModifierFournisseur_clicked()
               QMessageBox::critical(nullptr, QObject::tr("Modifier un fournisseur"),
                           QObject::tr("Erreur !\n"
                                       "Click Cancel to exit."), QMessageBox::Cancel);
+
 }
+
 
 void ProjetKhaled::on_pbSupprimerFournisseur_clicked()
 {
@@ -334,7 +367,32 @@ void ProjetKhaled::on_pbSupprimerFournisseur_clicked()
 
 void ProjetKhaled::on_pbFournisseurAfficher_clicked()
 {
-     ui->tabFournisseur->setModel(tmpFournisseur.afficherFournisseur());
+
+
+    ui->tabFournisseur->setModel(tmpFournisseur.afficherFournisseur());
+/*
+    ui->tabFournisseur->setModel(tmpFournisseur.afficherFournisseur());
+    ui->cbModifFourni->currentText();
+    QSqlQuery query, q;
+        query.prepare("SELECT ID FROM fournisseur");
+        if(query.exec()){
+            ui->cbModifFourni->clear();
+           // ui->idModifComboPar->clear();
+            while(query.next()){
+                ui->cbModifFourni->addItem(query.value(0).toString());
+                //ui->idSupprComboPar->addItem(query.value(0).toString());
+            }
+            q.prepare("SELECT * FROM fournisseur WHERE ID = :id");
+            q.bindValue(":id", ui->cbModifFourni->currentText());
+            if(q.exec()){
+                q.next();
+                ui->cbModifFourni->setCurrentText(q.value(0).toString());
+                //ui->capaciteModifPar->setText(q.value(1).toString());
+               // ui->etatComboPar->setCurrentIndex(q.value(2).toInt());
+
+*/
+//}
+  //      }
 }
 
 void ProjetKhaled::on_pbFournisseurRechercher_clicked()
@@ -353,20 +411,27 @@ void ProjetKhaled::on_pbFournisseurRechercher_clicked()
                     QObject::tr("Erreur!\n"
                                 "Click Cancel to exit."), QMessageBox::Cancel);
 }
-
-void ProjetKhaled::on_pbFournisseurTri1Alpha_clicked()
-{
-    bool test = tmpFournisseur.triFournisseur();
-    if (test){
-    ui->tabFournisseur->setModel(tmpFournisseur.triFournisseur());}//refresh
-    QMessageBox::information(nullptr, QObject::tr("Tri termine"),
-    QObject::tr("Tri terminer.\n"
-    "Click ok to exit."), QMessageBox::Ok);
-}
-
+/*
 void ProjetKhaled::on_comboBox_currentIndexChanged()
 {
      ui->tabFournisseur->setModel(tmpFournisseur.triFournisseur());
+}
+*/
+
+void ProjetKhaled::on_comboBox_currentTextChanged(const QString &arg1)
+{
+    if(arg1 == "ID par ordre Croissant"){
+
+         ui->tabFournisseur->setModel(tmpFournisseur.triFournisseur());}
+         else if(arg1 =="ID par ordre Decroissant"){
+        ui->tabFournisseur->setModel(tmpFournisseur.triFournisseur2());
+    }
+        else if(arg1 =="Nom par ordre Croissant"){
+    ui->tabFournisseur->setModel(tmpFournisseur.triFournisseur3());
+    }
+        else if(arg1 =="Nom par ordre Decroissant"){
+    ui->tabFournisseur->setModel(tmpFournisseur.triFournisseur4());
+    }
 }
 
 //##############################################################################################################
@@ -405,14 +470,14 @@ void ProjetKhaled::on_pbMaterielAjout_clicked()
                     QObject::tr("Prix Invalide\n"
                                 "Click Cancel to exit."), QMessageBox::Cancel);}
 
-
-    int idFournisseur=ui->LEIDFournisseurMaterielAjout->text().toInt();
+    int idFournisseur=ui->cbAjoutMat->currentText().toInt();
+   /*int idFournisseur=ui->LEIDFournisseurMaterielAjout->text().toInt();
     if(idFournisseur<1 || idFournisseur>99999999){
         control = false;
         QMessageBox::critical(nullptr, QObject::tr("Ajouter fournisseur materiel"),
                     QObject::tr("ID de fournisseur invalide ou n'existe pas, verifier l'affichage des fournisseurs\n"
                                 "Click Cancel to exit."), QMessageBox::Cancel);}
-
+*/
     if(control){
     materiel mat(id,nom,quantite,prix,idFournisseur);
     bool test=mat.ajouterMateriel();
@@ -508,31 +573,6 @@ void ProjetKhaled::on_pbMaterielAfficher_clicked()
 }
 
 
-/*
-void ProjetKhaled::on_pbStatMaterielPrix_clicked()
-{
-    bool test = tmpMateriel.stat();
-    if (test){
-    ui->tabMaterielStat->setModel(tmpMateriel.stat());}//refresh
-    QMessageBox::information(nullptr, QObject::tr("Stat prix terminer"),
-    QObject::tr("Stat prix terminer.\n"
-    "Click ok to exit."), QMessageBox::Ok);
-
-
-}
-
-void ProjetKhaled::on_pbStatMaterielQuantite_clicked()
-{
-    bool test = tmpMateriel.statQuantite();
-    if (test){
-    ui->tabMaterielStat->setModel(tmpMateriel.statQuantite());}//refresh
-    QMessageBox::information(nullptr, QObject::tr("Stat quantite terminer"),
-    QObject::tr("Stat quantite terminer.\n"
-    "Click ok to exit."), QMessageBox::Ok);
-
-}
-*/
-
 
 void ProjetKhaled::on_pbMaterielRechercher_clicked()
 {
@@ -551,30 +591,6 @@ void ProjetKhaled::on_pbMaterielRechercher_clicked()
                                 "Click Cancel to exit."), QMessageBox::Cancel);
 
 }
-
-/*
-void ProjetKhaled::on_pbTriMaterielQuantite_clicked()
-{
-    bool test = tmpMateriel.triQuantite();
-    if (test){
-    ui->tabMaterielTri->setModel(tmpMateriel.tri());}//refresh
-    QMessageBox::information(nullptr, QObject::tr("Stat quantite terminer"),
-    QObject::tr("Tri quantite terminer.\n"
-    "Click ok to exit."), QMessageBox::Ok);
-
-}
-*/
-
-void ProjetKhaled::on_pbMaterielTri1Alpha_clicked()
-{
-    bool test = tmpMateriel.tri();
-    if (test){
-    ui->tabMateriel->setModel(tmpMateriel.tri());}//refresh
-    QMessageBox::information(nullptr, QObject::tr("Tri terminer"),
-    QObject::tr("Tri quantite terminer.\n"
-    "Click ok to exit."), QMessageBox::Ok);
-}
-
 
 
 
@@ -598,3 +614,49 @@ void ProjetKhaled::on_pbStat_clicked()
 }
 
 
+
+
+/*
+void ProjetKhaled::on_cbModifFourni_currentTextChanged(const QString &arg1)
+{
+
+}*/
+
+
+
+void ProjetKhaled::on_cbTriBus_2_currentTextChanged(const QString &arg1)
+{
+    if(arg1 == "ID materiel par ordre Croissant"){
+
+         ui->tabMateriel->setModel(tmpMateriel.tri());}
+            else if(arg1 =="ID materiel par ordre Decroissant"){
+      ui->tabMateriel->setModel(tmpMateriel.tri2());
+    }
+            else if(arg1 =="Nom materiel par ordre Croissant"){
+                ui->tabMateriel->setModel(tmpMateriel.tri3());
+    }
+            else if(arg1 =="Nom materiel par ordre Decroissant"){
+                 ui->tabMateriel->setModel(tmpMateriel.tri4());
+         }
+            else if(arg1 =="Quantite par ordre Croissant"){
+                ui->tabMateriel->setModel(tmpMateriel.tri5());}
+            else if(arg1 =="Quantite par ordre Decroissant"){
+                ui->tabMateriel->setModel(tmpMateriel.tri6());
+           }
+             else if(arg1 =="Prix par ordre Croissant"){
+                ui->tabMateriel->setModel(tmpMateriel.tri7());
+        }
+             else if(arg1 =="Prix par ordre Decroissant"){
+               ui->tabMateriel->setModel(tmpMateriel.tri8());
+        }
+}
+
+void ProjetKhaled::on_pbMaterielImprimer_clicked()
+{
+    QPrinter printer;
+        QPainter painter;
+        printer.setPrinterName("desired printer name");
+        QPrintDialog dialog(&printer,this);
+        if(dialog.exec()==QDialog::Rejected)return;
+        ui->tabMateriel->render(&printer);
+}
