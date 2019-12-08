@@ -133,7 +133,59 @@ return model;
 }
 QSqlQueryModel * bus::triBus2(){
 QSqlQueryModel * model= new QSqlQueryModel();
-model->setQuery("Select * from bus order by DESC");
+model->setQuery("Select * from bus order by id DESC");
+model->setHeaderData(0,Qt::Horizontal,QObject::tr("IMMATRICULE"));
+model->setHeaderData(1,Qt::Horizontal,QObject::tr("NBPLACE"));
+model->setHeaderData(2,Qt::Horizontal,QObject::tr("DESTINATION"));
+model->setHeaderData(3,Qt::Horizontal,QObject::tr("IDFOURNISSEUR"));
+model->setHeaderData(4,Qt::Horizontal,QObject::tr("IDTRAJET"));
+model->setHeaderData(5,Qt::Horizontal,QObject::tr("IDPLACE"));
+model->setHeaderData(6,Qt::Horizontal,QObject::tr("CINAGENT"));
+return model;
+}
+
+QSqlQueryModel * bus::triBus3(){
+QSqlQueryModel * model= new QSqlQueryModel();
+model->setQuery("Select * from bus order by nbplace");
+model->setHeaderData(0,Qt::Horizontal,QObject::tr("IMMATRICULE"));
+model->setHeaderData(1,Qt::Horizontal,QObject::tr("NBPLACE"));
+model->setHeaderData(2,Qt::Horizontal,QObject::tr("DESTINATION"));
+model->setHeaderData(3,Qt::Horizontal,QObject::tr("IDFOURNISSEUR"));
+model->setHeaderData(4,Qt::Horizontal,QObject::tr("IDTRAJET"));
+model->setHeaderData(5,Qt::Horizontal,QObject::tr("IDPLACE"));
+model->setHeaderData(6,Qt::Horizontal,QObject::tr("CINAGENT"));
+return model;
+}
+
+QSqlQueryModel * bus::triBus4(){
+QSqlQueryModel * model= new QSqlQueryModel();
+model->setQuery("Select * from bus order by nbplace DESC");
+model->setHeaderData(0,Qt::Horizontal,QObject::tr("IMMATRICULE"));
+model->setHeaderData(1,Qt::Horizontal,QObject::tr("NBPLACE"));
+model->setHeaderData(2,Qt::Horizontal,QObject::tr("DESTINATION"));
+model->setHeaderData(3,Qt::Horizontal,QObject::tr("IDFOURNISSEUR"));
+model->setHeaderData(4,Qt::Horizontal,QObject::tr("IDTRAJET"));
+model->setHeaderData(5,Qt::Horizontal,QObject::tr("IDPLACE"));
+model->setHeaderData(6,Qt::Horizontal,QObject::tr("CINAGENT"));
+return model;
+}
+
+QSqlQueryModel * bus::triBus5(){
+QSqlQueryModel * model= new QSqlQueryModel();
+model->setQuery("Select * from bus order by destination");
+model->setHeaderData(0,Qt::Horizontal,QObject::tr("IMMATRICULE"));
+model->setHeaderData(1,Qt::Horizontal,QObject::tr("NBPLACE"));
+model->setHeaderData(2,Qt::Horizontal,QObject::tr("DESTINATION"));
+model->setHeaderData(3,Qt::Horizontal,QObject::tr("IDFOURNISSEUR"));
+model->setHeaderData(4,Qt::Horizontal,QObject::tr("IDTRAJET"));
+model->setHeaderData(5,Qt::Horizontal,QObject::tr("IDPLACE"));
+model->setHeaderData(6,Qt::Horizontal,QObject::tr("CINAGENT"));
+return model;
+}
+
+QSqlQueryModel * bus::triBus6(){
+QSqlQueryModel * model= new QSqlQueryModel();
+model->setQuery("Select * from bus order by destination DESC");
 model->setHeaderData(0,Qt::Horizontal,QObject::tr("IMMATRICULE"));
 model->setHeaderData(1,Qt::Horizontal,QObject::tr("NBPLACE"));
 model->setHeaderData(2,Qt::Horizontal,QObject::tr("DESTINATION"));
@@ -158,5 +210,9 @@ model->setHeaderData(6,Qt::Horizontal,QObject::tr("CINAGENT"));
     return model;
 }
 
-
+QSqlQueryModel * bus::comboxidbus(){
+    QSqlQueryModel * model = new QSqlQueryModel();
+    model->setQuery("select id from bus");
+    return model;
+}
 

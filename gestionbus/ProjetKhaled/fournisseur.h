@@ -20,6 +20,9 @@ public:
     QSqlQueryModel * rechercheFournisseur(int);
     QSqlQueryModel * triFournisseur();
     QSqlQueryModel * triFournisseur2();
+    QSqlQueryModel * triFournisseur3();
+    QSqlQueryModel * triFournisseur4();
+    QSqlQueryModel * comboxidfournis();
 private:
     int idFournisseur;
     QString nomFournisseur;

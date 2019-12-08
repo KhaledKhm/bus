@@ -46,32 +46,33 @@ private slots:
 
     void on_pbBusAfficher_clicked();
 
-    void on_pbStatMaterielPrix_clicked();
-
-    void on_pbStatMaterielQuantite_clicked();
 
     void on_pbMaterielRechercher_clicked();
-
-    void on_pbMaterielTri1Alpha_clicked();
-
-    void on_Stat_currentChanged(int index);
 
 
     void on_pbBusRechercher_clicked();
 
     void on_pbFournisseurRechercher_clicked();
 
-    void on_pbFournisseurTri1Alpha_clicked();
 
-    void on_pbBusTri1Alpha_clicked();
-
-    void on_pbBusTri1Alpha_2_clicked();
 
     void on_pbMaterielTri1Alpha_3_clicked();
 
     void on_pbStat_clicked();
 
-    void on_comboBox_currentIndexChanged();
+
+
+    void on_comboBox_currentTextChanged(const QString &arg1);
+
+
+
+    void on_cbTriBus_currentTextChanged(const QString &arg1);
+
+    void on_cbTriBus_2_currentTextChanged(const QString &arg1);
+
+    void on_pbMaterielImprimer_clicked();
+
+
 
 private:
     Ui::ProjetKhaled *ui;

@@ -72,14 +72,30 @@ model->setHeaderData(2, Qt::Horizontal, QObject::tr("ide"));
 
 QSqlQueryModel * fournisseur::triFournisseur(){
 QSqlQueryModel * model= new QSqlQueryModel();
-model->setQuery("Select * from fournisseur order by id");
+model->setQuery("Select * from fournisseur order by id ASC");
 model->setHeaderData(0,Qt::Horizontal,QObject::tr("ID"));
 model->setHeaderData(1,Qt::Horizontal,QObject::tr("NOM"));
 return model;
 }
 QSqlQueryModel * fournisseur::triFournisseur2(){
 QSqlQueryModel * model= new QSqlQueryModel();
-model->setQuery("Select * from fournisseur order by nom");
+model->setQuery("Select * from fournisseur order by id DESC");
+model->setHeaderData(0,Qt::Horizontal,QObject::tr("ID"));
+model->setHeaderData(1,Qt::Horizontal,QObject::tr("NOM"));
+return model;
+}
+
+QSqlQueryModel * fournisseur::triFournisseur3(){
+QSqlQueryModel * model= new QSqlQueryModel();
+model->setQuery("Select * from fournisseur order by nom ASC");
+model->setHeaderData(0,Qt::Horizontal,QObject::tr("ID"));
+model->setHeaderData(1,Qt::Horizontal,QObject::tr("NOM"));
+return model;
+}
+
+QSqlQueryModel * fournisseur::triFournisseur4(){
+QSqlQueryModel * model= new QSqlQueryModel();
+model->setQuery("Select * from fournisseur order by nom DESC");
 model->setHeaderData(0,Qt::Horizontal,QObject::tr("ID"));
 model->setHeaderData(1,Qt::Horizontal,QObject::tr("NOM"));
 return model;
@@ -95,7 +111,8 @@ model->setHeaderData(1,Qt::Horizontal,QObject::tr("NOM"));
 }
 
 
-
-
-
-
+QSqlQueryModel * fournisseur::comboxidfournis(){
+    QSqlQueryModel * model = new QSqlQueryModel();
+    model->setQuery("select id from fournisseur");
+    return model;
+}

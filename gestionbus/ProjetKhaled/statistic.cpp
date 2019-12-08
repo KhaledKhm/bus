@@ -1,6 +1,6 @@
 #include "statistic.h"
 #include "ui_statistic.h"
-
+#include <QMediaPlayer>
 statistic::statistic(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::statistic)
@@ -14,7 +14,9 @@ statistic::~statistic()
 }
 
 void statistic::on_retour_clicked()
-{
+{    QMediaPlayer * music = new QMediaPlayer();
+     music->setMedia(QUrl("qrc:/new/sound/boutton.wav"));
+     music->play();
     hide();
 }
 int statistic::Statistique_partie1()

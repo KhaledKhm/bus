@@ -20,6 +20,14 @@ public:
     QSqlQueryModel * recherche(int);
     QSqlQueryModel * tri();
     QSqlQueryModel * tri2();
+    QSqlQueryModel * tri3();
+    QSqlQueryModel * tri4();
+    QSqlQueryModel * tri5();
+    QSqlQueryModel * tri6();
+    QSqlQueryModel * tri7();
+    QSqlQueryModel * tri8();
+    QSqlQueryModel * comboxidMat();
+
 private:
     int idMateriel;
     QString nomMateriel;

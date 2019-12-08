@@ -22,6 +22,12 @@ public:
     QSqlQueryModel * rechercheBus(int);
     QSqlQueryModel * triBus();
     QSqlQueryModel * triBus2();
+    QSqlQueryModel * triBus3();
+    QSqlQueryModel * triBus4();
+    QSqlQueryModel * triBus5();
+    QSqlQueryModel * triBus6();
+    QSqlQueryModel * comboxidbus();
+
 private:
     int id;
     int nbPlace;

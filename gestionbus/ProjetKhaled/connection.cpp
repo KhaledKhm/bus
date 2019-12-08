@@ -20,7 +20,7 @@ db.setPassword("ProjetBus");//inserer mot de passe de cet utilisateur
 if (db.open())
 test=true;
 
-//else throw QString("Erreur Paremetres"+db.lastError().test);
+else throw QString("Erreur Paremetres"+db.lastError().text());
 
 
 

@@ -125,11 +125,83 @@ model->setHeaderData(4,Qt::Horizontal,QObject::tr("IDFOURNISSEUR"));
 
 QSqlQueryModel * materiel::tri2(){
 QSqlQueryModel * model= new QSqlQueryModel();
+model->setQuery("Select * from materiel order by id DESC");
+model->setHeaderData(0,Qt::Horizontal,QObject::tr("ID"));
+model->setHeaderData(1,Qt::Horizontal,QObject::tr("NOM"));
+model->setHeaderData(2,Qt::Horizontal,QObject::tr("QUANTITE"));
+model->setHeaderData(3,Qt::Horizontal,QObject::tr("PRIX"));
+model->setHeaderData(4,Qt::Horizontal,QObject::tr("IDFOURNISSEUR"));
+    return model;
+}
+
+QSqlQueryModel * materiel::tri3(){
+QSqlQueryModel * model= new QSqlQueryModel();
 model->setQuery("Select * from materiel order by nom");
 model->setHeaderData(0,Qt::Horizontal,QObject::tr("ID"));
 model->setHeaderData(1,Qt::Horizontal,QObject::tr("NOM"));
 model->setHeaderData(2,Qt::Horizontal,QObject::tr("QUANTITE"));
 model->setHeaderData(3,Qt::Horizontal,QObject::tr("PRIX"));
 model->setHeaderData(4,Qt::Horizontal,QObject::tr("IDFOURNISSEUR"));
+    return model;
+}
+
+QSqlQueryModel * materiel::tri4(){
+QSqlQueryModel * model= new QSqlQueryModel();
+model->setQuery("Select * from materiel order by nom DESC");
+model->setHeaderData(0,Qt::Horizontal,QObject::tr("ID"));
+model->setHeaderData(1,Qt::Horizontal,QObject::tr("NOM"));
+model->setHeaderData(2,Qt::Horizontal,QObject::tr("QUANTITE"));
+model->setHeaderData(3,Qt::Horizontal,QObject::tr("PRIX"));
+model->setHeaderData(4,Qt::Horizontal,QObject::tr("IDFOURNISSEUR"));
+    return model;
+}
+
+QSqlQueryModel * materiel::tri5(){
+QSqlQueryModel * model= new QSqlQueryModel();
+model->setQuery("Select * from materiel order by quantite");
+model->setHeaderData(0,Qt::Horizontal,QObject::tr("ID"));
+model->setHeaderData(1,Qt::Horizontal,QObject::tr("NOM"));
+model->setHeaderData(2,Qt::Horizontal,QObject::tr("QUANTITE"));
+model->setHeaderData(3,Qt::Horizontal,QObject::tr("PRIX"));
+model->setHeaderData(4,Qt::Horizontal,QObject::tr("IDFOURNISSEUR"));
+    return model;
+}
+
+QSqlQueryModel * materiel::tri6(){
+QSqlQueryModel * model= new QSqlQueryModel();
+model->setQuery("Select * from materiel order by quantite DESC");
+model->setHeaderData(0,Qt::Horizontal,QObject::tr("ID"));
+model->setHeaderData(1,Qt::Horizontal,QObject::tr("NOM"));
+model->setHeaderData(2,Qt::Horizontal,QObject::tr("QUANTITE"));
+model->setHeaderData(3,Qt::Horizontal,QObject::tr("PRIX"));
+model->setHeaderData(4,Qt::Horizontal,QObject::tr("IDFOURNISSEUR"));
+    return model;
+}
+
+QSqlQueryModel * materiel::tri7(){
+QSqlQueryModel * model= new QSqlQueryModel();
+model->setQuery("Select * from materiel order by prix");
+model->setHeaderData(0,Qt::Horizontal,QObject::tr("ID"));
+model->setHeaderData(1,Qt::Horizontal,QObject::tr("NOM"));
+model->setHeaderData(2,Qt::Horizontal,QObject::tr("QUANTITE"));
+model->setHeaderData(3,Qt::Horizontal,QObject::tr("PRIX"));
+model->setHeaderData(4,Qt::Horizontal,QObject::tr("IDFOURNISSEUR"));
+    return model;
+}
+
+QSqlQueryModel * materiel::tri8(){
+QSqlQueryModel * model= new QSqlQueryModel();
+model->setQuery("Select * from materiel order by prix DESC");
+model->setHeaderData(0,Qt::Horizontal,QObject::tr("ID"));
+model->setHeaderData(1,Qt::Horizontal,QObject::tr("NOM"));
+model->setHeaderData(2,Qt::Horizontal,QObject::tr("QUANTITE"));
+model->setHeaderData(3,Qt::Horizontal,QObject::tr("PRIX"));
+model->setHeaderData(4,Qt::Horizontal,QObject::tr("IDFOURNISSEUR"));
+    return model;
+}
+
+QSqlQueryModel * materiel::comboxidMat(){
+    QSqlQueryModel * model = new QSqlQueryModel();
+    model->setQuery("select id from materiel");
     return model;
 }
