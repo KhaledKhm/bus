@@ -29,7 +29,7 @@
     <property name="styleSheet">
      <string notr="true">QMainWindow {
 
-	background-color:#f0f0f0;
+	background-color:rgb(136,161,243);
 
 }
 
@@ -97,7 +97,7 @@ QColorDialog {
 
 QComboBox {
 
-	color:rgb(81,72,65);
+	color:rgb(170,182,222);
 
 	background: #ffffff;
 
@@ -176,7 +176,8 @@ QFontComboBox {
 QLabel {
 
 	color:rgb(17,17,17);
-
+	
+	font: 75 8pt &quot;Times New Roman&quot;;
 }
 
 QLineEdit {
@@ -371,7 +372,7 @@ QPushButton{
 
 QPushButton:hover{
 
-	color:rgb(17,17,17);
+	color:rgb(147,147,175);
 
 	border-width: 1px;
 
@@ -419,7 +420,7 @@ QPushButton:default{
 
 QPushButton:pressed{
 
-	color:rgb(17,17,17);
+	color:rgb(185,13,25);
 
 	border-width: 1px;
 
@@ -1027,7 +1028,7 @@ QTabWidget {
 
 	color:rgb(0,0,0);
 
-	background-color:rgb(247,246,246);
+	background-color:rgb(170,182,222)
 
 }
 
@@ -1035,7 +1036,7 @@ QTabWidget::pane {
 
 	border-color: rgb(180,180,180);
 
-	background-color:rgb(247,246,246);
+	background-color:rgb(136,161,243);
 
 	border-style: solid;
 
@@ -1142,7 +1143,7 @@ QToolBox::tab:selected {
 }</string>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab_8">
      <attribute name="title">
