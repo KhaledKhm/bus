@@ -104,7 +104,9 @@ bool agent::modifierAgent(Ui::MainWindow *ui)
 {
     QSqlQuery q;
     q.prepare("update agent set NOM=:nom,PRENOM=:prenom,DATENAISS=:age,SALAIRE=:salaire,SEXE=:sexe where CIN=:cin" );
-    q.bindValue(":cin",ui->LEMODIFCIN->text());
+
+    q.bindValue(":cin",ui->cbModifCINAgent->currentText());
+  //  q.bindValue(":cin",ui->LEMODIFCIN->text());
     q.bindValue(":nom",ui->LEmodifnom->text());
     q.bindValue(":prenom",ui->LEmodifprenom->text());
     q.bindValue(":age",ui->LEmodifdatenaiss->text());
@@ -117,14 +119,14 @@ bool agent::modifierAgent(Ui::MainWindow *ui)
     {
 
         QMessageBox msgBox ;
-                msgBox.setText("le patient a ete modifie ");
+                msgBox.setText("l'agent a ete modifie ");
                 msgBox.exec();
         return true;
     }
     else
 {
         QMessageBox msgBox ;
-                msgBox.setText("le patient n'est pas modifie ");
+                msgBox.setText("l'agent n'est pas modifie ");
                 msgBox.exec();
         return false;
 }
@@ -134,7 +136,7 @@ bool agent::modifierAgent(Ui::MainWindow *ui)
 void agent::afficherAgent(Ui::MainWindow *ui)
 {
     QSqlQuery q,k;
-    q.prepare("select * from patient WHERE ID_patient ='"+ui->tableView->model()->data(ui->tableView->model()->index(ui->tableView->selectionModel()->currentIndex().row(),0)).toString()+"'");
+    q.prepare("select * from agent WHERE cin='"+ui->tableView->model()->data(ui->tableView->model()->index(ui->tableView->selectionModel()->currentIndex().row(),0)).toString()+"'");
 
     q.exec();
     q.next();
@@ -180,10 +182,14 @@ QSqlQueryModel *agent::trieragent(QString col)
 QSqlQueryModel *agent::rechercheragent(QString Nom)
 {
     QSqlQueryModel *model = new QSqlQueryModel();
-        QSqlQuery query;
-        query.prepare("select * from agent where nom= '"+Nom+"' ");
-        query.exec();
-        model->setQuery(query);
+        model->setQuery("select * from agent where nom like '%" + Nom + "%'");
         return model;
 
+}
+
+QSqlQueryModel * agent::comboidAgent(){
+
+    QSqlQueryModel *modal=new QSqlQueryModel();
+    modal->setQuery("select cin from agent");
+    return modal;
 }

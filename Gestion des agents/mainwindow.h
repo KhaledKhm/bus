@@ -1,7 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 #include"agent.h"
-#include"service.h"
+#include "service.h"
 #include <QMainWindow>
 #include <QtCore>
 #include <QtGui>
@@ -17,6 +17,10 @@
 #include <QtCharts/QCategoryAxis>
 #include <QtCharts/QPieSeries>
 #include <QtCharts/QPieSlice>
+#include"QPainter"
+#include"QPdfWriter"
+#include"QDesktopServices"
+#include"QtPrintSupport/QPrinter"
 namespace Ui {
 class MainWindow;
 }
@@ -46,10 +50,23 @@ private slots:
 
     void on_imprimer_clicked();
 
+    void on_pushButton_3_clicked();
+
+    void on_Satatistique_clicked();
+
+    void on_ajou_clicked();
+
+    void on_Actu_clicked();
+
+    void on_sup_clicked();
+
+    void on_modif_clicked();
+
 private:
     Ui::MainWindow *ui;
    QGraphicsScene *scene;
    QTimer *timer ;
+   //service tmpService;
 };
 
 #endif // MAINWINDOW_H

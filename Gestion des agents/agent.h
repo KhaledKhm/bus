@@ -25,7 +25,7 @@ public:
     void AfficherTableAgent(Ui::MainWindow *ui);
     QSqlQueryModel *trieragent(QString);
     QSqlQueryModel *rechercheragent(QString Nom);
-
+    QSqlQueryModel * comboidAgent();
 
 private:
     QString cinAgent;

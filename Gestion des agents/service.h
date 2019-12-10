@@ -1,22 +1,30 @@
 #ifndef SERVICE_H
 #define SERVICE_H
 #include "agent.h"
-
+#include <QString>
+#include <QtSql/QSqlQuery>
+#include <QtSql/QSqlQueryModel>
+#include "ui_mainwindow.h"
+#include "mainwindow.h"
 class service
 {
 public:
     service();
-    service(int,QString,int);
-    int get_idService();
+    service(QString,QString,QString);
+    QString get_idService();
     QString get_nomService();
-    bool ajouterService();
-    bool modifierService(int);
+    QString get_capacite();
+    bool ajouterService(Ui::MainWindow*ui);
+    bool modifierService(Ui::MainWindow *ui);
     QSqlQueryModel * afficherService();
-    bool supprimerService(int);
+    bool supprimerService(QString);
+    void AfficherTableService(Ui::MainWindow *ui);
+    QSqlQueryModel * comboidService();
+
 private:
-    int idService;
+    QString idService;
     QString libelleService;
-    int capaciteService;
+    QString capaciteService;
 };
 
 #endif // SERVICE_H
