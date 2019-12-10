@@ -1362,7 +1362,7 @@ QToolBox::tab:selected {
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>600</x>
@@ -1394,7 +1394,7 @@ QToolBox::tab:selected {
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>280</x>
@@ -1422,7 +1422,7 @@ QToolBox::tab:selected {
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>518</x>
@@ -1460,7 +1460,7 @@ QToolBox::tab:selected {
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>730</x>
@@ -1724,7 +1724,7 @@ QToolBox::tab:selected {
          <string>Imprimer materiels</string>
         </property>
        </widget>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
           <x>10</x>
@@ -1768,7 +1768,7 @@ QToolBox::tab:selected {
          </item>
         </layout>
        </widget>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
           <x>250</x>
@@ -1839,7 +1839,7 @@ QToolBox::tab:selected {
          </item>
         </layout>
        </widget>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
           <x>680</x>
@@ -1890,7 +1890,7 @@ QToolBox::tab:selected {
          <cursorShape>PointingHandCursor</cursorShape>
         </property>
        </widget>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
           <x>30</x>
@@ -2339,7 +2339,7 @@ QToolBox::tab:selected {
          <string>Statstique type des bus</string>
         </property>
        </widget>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
           <x>10</x>
@@ -2385,7 +2385,7 @@ QToolBox::tab:selected {
          </item>
         </layout>
        </widget>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
           <x>600</x>
@@ -2417,7 +2417,7 @@ QToolBox::tab:selected {
          </item>
         </layout>
        </widget>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
           <x>240</x>
