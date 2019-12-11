@@ -1,4 +1,4 @@
-QT       += core gui sql charts printsupport network
+QT       += core gui sql charts printsupport network multimedia
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -18,9 +18,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     abonnement_el.cpp \
     abonnement_normal.cpp \
+    bus.cpp \
     connection.cpp \
     conv.cpp \
     even.cpp \
+    fournisseur.cpp \
     gerer_abonne.cpp \
     gerer_evenement.cpp \
     gerer_parking.cpp \
@@ -39,19 +41,24 @@ SOURCES += \
     mailing/smtpclient.cpp \
     main.cpp \
     mainwindow.cpp \
+    materiel.cpp \
     menu.cpp \
     parking.cpp \
     place.cpp \
+    projetkhaled.cpp \
     rem.cpp \
     stat2.cpp \
+    statisticbus.cpp \
     statistique.cpp
 
 HEADERS += \
     abonnement_el.h \
     abonnement_normal.h \
+    bus.h \
     connection.h \
     conv.h \
     even.h \
+    fournisseur.h \
     gerer_abonne.h \
     gerer_evenement.h \
     gerer_parking.h \
@@ -71,11 +78,14 @@ HEADERS += \
     mailing/smtpclient.h \
     mailing/smtpexports.h \
     mainwindow.h \
+    materiel.h \
     menu.h \
     parking.h \
     place.h \
+    projetkhaled.h \
     rem.h \
     stat2.h \
+    statisticbus.h \
     statistique.h
 
 FORMS += \
@@ -84,9 +94,14 @@ FORMS += \
     gerer_parking.ui \
     mainwindow.ui \
     menu.ui \
+    projetkhaled.ui \
+    statisticbus.ui \
     statistique.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    sound.qrc

@@ -3,6 +3,7 @@
 #include "gerer_abonne.h"
 #include "gerer_parking.h"
 #include "gerer_evenement.h"
+#include "projetkhaled.h"
 Menu::Menu(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Menu)
@@ -36,4 +37,10 @@ void Menu::on_radioButton_5_clicked()
 {
     gerer_evenement even;
     even.exec();
+}
+
+void Menu::on_radioButton_2_clicked()
+{
+    ProjetKhaled bus;
+    bus.exec();
 }
