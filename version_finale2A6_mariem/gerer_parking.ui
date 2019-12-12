@@ -1,0 +1,973 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>gerer_parking</class>
+ <widget class="QDialog" name="gerer_parking">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>695</width>
+    <height>461</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>:/myappico.png</normaloff>:/myappico.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">
+
+.QWidget {
+   background-color: beige;
+}
+
+/* Nice Windows-XP-style password character. */
+QLineEdit[echoMode=&quot;2&quot;] {
+    lineedit-password-character: 9679;
+}
+
+/* We provide a min-width and min-height for push buttons
+   so that they look elegant regardless of the width of the text. */
+QPushButton {
+    background-color: palegoldenrod;
+    border-width: 2px;
+    border-color: darkkhaki;
+    border-style: solid;
+    border-radius: 5;
+    padding: 3px;
+    min-width: 9ex;
+    min-height: 2.5ex;
+}
+
+QPushButton:hover {
+   background-color: khaki;
+}
+
+/* Increase the padding, so the text is shifted when the button is
+   pressed. */
+QPushButton:pressed {
+    padding-left: 5px;
+    padding-top: 5px;
+    background-color: #d0d67c;
+}
+
+QLabel, QAbstractButton {
+
+    color:rgb(153, 51, 51);
+  
+}
+
+/* Mark mandatory fields with a brownish color. */
+.mandatory {
+    color: brown;
+}
+
+/* Bold text on status bar looks awful. */
+QStatusBar QLabel {
+   font: normal;
+}
+
+QStatusBar::item {
+    border-width: 1;
+    border-color: darkkhaki;
+    border-style: solid;
+    border-radius: 2;
+}
+
+QComboBox, QLineEdit, QSpinBox, QTextEdit, QListView {
+    background-color: cornsilk;
+    selection-color: #0a214c; 
+    selection-background-color: #C19A6B;
+}
+
+QListView {
+    show-decoration-selected: 1;
+}
+
+QListView::item:hover {
+    background-color: wheat;
+}
+
+/* We reserve 1 pixel space in padding. When we get the focus,
+   we kill the padding and enlarge the border. This makes the items
+   glow. */
+QLineEdit, QFrame {
+    border-width: 2px;
+    padding: 1px;
+    border-style: solid;
+    border-color: darkkhaki;
+    border-radius: 5px;
+}
+
+/* As mentioned above, eliminate the padding and increase the border. */
+QLineEdit:focus, QFrame:focus {
+    border-width: 3px;
+    padding: 0px;
+}
+
+/* A QLabel is a QFrame ... */
+QLabel {
+    border: none;
+    padding: 0;
+    background: none;
+}
+
+/* A QToolTip is a QLabel ... */
+QToolTip {
+    border: 2px solid darkkhaki;
+    padding: 5px;
+    border-radius: 3px;
+    opacity: 200;
+}
+
+/* Nice to have the background color change when hovered. */
+QRadioButton:hover, QCheckBox:hover {
+   background-color: rgb(255, 153, 153)
+;
+}
+QRadioButton:checked{
+   background-color: rgb(255, 153, 153)
+;
+}
+/* Force the dialog's buttons to follow the Windows guidelines. */
+QDialogButtonBox {
+   background-color: rgb(255, 204, 204);
+
+}
+QDialog{
+   background-color:beige;
+
+}
+/**** QMenuBar (enabled) ****/
+QMenuBar
+{
+   background-color: beige;
+  border: 1px solid transparent;
+  border-bottom-color: rgb(80,80,80);
+}
+
+QMenuBar::item
+{
+   background-color: beige;
+  color: rgb(220,220,220);
+  padding: 8px;
+}
+
+QMenuBar::item:selected
+{
+   background-color: beige;
+  color: white;
+}
+
+/**** QMenuBar (disabled) ****/
+QMenuBar:disabled
+{
+   background-color: beige;
+  border-bottom-color: rgb(60,60,60);
+}
+
+QMenuBar::item:disabled
+{
+  color: rgb(40,40,40);
+}
+
+/*********************************************************************************************************/
+
+/**** QMenu (enabled) ****/
+QMenu
+{
+   background-color: beige;
+  color: rgb(220,220,220);
+}
+
+QMenu::item:selected
+{
+   background-color: beige;
+  color: white;
+}</string>
+  </property>
+  <widget class="QTabWidget" name="tabWidget">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>20</y>
+     <width>651</width>
+     <height>431</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="currentIndex">
+    <number>0</number>
+   </property>
+   <widget class="QWidget" name="tab_4">
+    <attribute name="title">
+     <string>Gestion des Parkings</string>
+    </attribute>
+    <widget class="QTableView" name="tabParking">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>70</y>
+       <width>621</width>
+       <height>211</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="idPar">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>300</y>
+       <width>151</width>
+       <height>21</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="capacitePar">
+     <property name="geometry">
+      <rect>
+       <x>180</x>
+       <y>300</y>
+       <width>141</width>
+       <height>21</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="ajouterPar">
+     <property name="geometry">
+      <rect>
+       <x>380</x>
+       <y>300</y>
+       <width>91</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Ajouter</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="etatComboPar">
+     <property name="geometry">
+      <rect>
+       <x>330</x>
+       <y>300</y>
+       <width>41</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>0</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>1</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="idSupprComboPar">
+     <property name="geometry">
+      <rect>
+       <x>510</x>
+       <y>310</y>
+       <width>101</width>
+       <height>21</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="supprPar">
+     <property name="geometry">
+      <rect>
+       <x>510</x>
+       <y>350</y>
+       <width>101</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Supprimer</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="idModifPar">
+     <property name="geometry">
+      <rect>
+       <x>130</x>
+       <y>360</y>
+       <width>91</width>
+       <height>21</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="capaciteModifPar">
+     <property name="geometry">
+      <rect>
+       <x>230</x>
+       <y>360</y>
+       <width>91</width>
+       <height>21</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="etatModifComboPar">
+     <property name="geometry">
+      <rect>
+       <x>330</x>
+       <y>360</y>
+       <width>41</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>0</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>1</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QPushButton" name="modifPar">
+     <property name="geometry">
+      <rect>
+       <x>380</x>
+       <y>360</y>
+       <width>91</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Modifier</string>
+     </property>
+    </widget>
+    <widget class="Line" name="line_21">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>290</y>
+       <width>481</width>
+       <height>101</height>
+      </rect>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="Line" name="line_23">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>621</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="idModifComboPar">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>360</y>
+       <width>91</width>
+       <height>21</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="trierPar">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>20</y>
+       <width>51</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Trier par</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="rafraichirPar">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>20</y>
+       <width>61</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Actualiser</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="rechTextPar">
+     <property name="geometry">
+      <rect>
+       <x>400</x>
+       <y>20</y>
+       <width>111</width>
+       <height>20</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="triComboPar">
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>20</y>
+       <width>151</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>Identifiant</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Capacite</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Etat</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="rechComboPar">
+     <property name="geometry">
+      <rect>
+       <x>520</x>
+       <y>20</y>
+       <width>101</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>Identifiant</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Capacite</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Etat</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QLabel" name="rechercher">
+     <property name="geometry">
+      <rect>
+       <x>340</x>
+       <y>20</y>
+       <width>61</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Rechercher</string>
+     </property>
+    </widget>
+    <widget class="Line" name="line_24">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>10</y>
+       <width>241</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="Line" name="line_22">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>340</y>
+       <width>481</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="Line" name="line_25">
+     <property name="geometry">
+      <rect>
+       <x>490</x>
+       <y>290</y>
+       <width>141</width>
+       <height>101</height>
+      </rect>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <zorder>line_21</zorder>
+    <zorder>line_22</zorder>
+    <zorder>line_23</zorder>
+    <zorder>line_24</zorder>
+    <zorder>line_25</zorder>
+    <zorder>tabParking</zorder>
+    <zorder>idPar</zorder>
+    <zorder>capacitePar</zorder>
+    <zorder>ajouterPar</zorder>
+    <zorder>etatComboPar</zorder>
+    <zorder>idSupprComboPar</zorder>
+    <zorder>supprPar</zorder>
+    <zorder>idModifPar</zorder>
+    <zorder>capaciteModifPar</zorder>
+    <zorder>etatModifComboPar</zorder>
+    <zorder>modifPar</zorder>
+    <zorder>idModifComboPar</zorder>
+    <zorder>trierPar</zorder>
+    <zorder>rafraichirPar</zorder>
+    <zorder>rechTextPar</zorder>
+    <zorder>triComboPar</zorder>
+    <zorder>rechComboPar</zorder>
+    <zorder>rechercher</zorder>
+   </widget>
+   <widget class="QWidget" name="tab">
+    <attribute name="title">
+     <string>Gestion des Places</string>
+    </attribute>
+    <widget class="QComboBox" name="idSupprComboPl">
+     <property name="geometry">
+      <rect>
+       <x>510</x>
+       <y>310</y>
+       <width>101</width>
+       <height>21</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="idModifPl">
+     <property name="geometry">
+      <rect>
+       <x>130</x>
+       <y>360</y>
+       <width>91</width>
+       <height>21</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="trierParPl">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>20</y>
+       <width>51</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Trier par</string>
+     </property>
+    </widget>
+    <widget class="Line" name="line_42">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>621</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="etatModifComboPl">
+     <property name="geometry">
+      <rect>
+       <x>230</x>
+       <y>360</y>
+       <width>41</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>0</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>1</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="triComboPl">
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>20</y>
+       <width>131</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>Identifiant</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Etat</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>ID Parking</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QLabel" name="rechercherPl">
+     <property name="geometry">
+      <rect>
+       <x>340</x>
+       <y>20</y>
+       <width>61</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Rechercher</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="etatComboPl">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>300</y>
+       <width>41</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>0</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>1</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QLineEdit" name="idPl">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>300</y>
+       <width>151</width>
+       <height>21</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="rechTextPl">
+     <property name="geometry">
+      <rect>
+       <x>400</x>
+       <y>20</y>
+       <width>111</width>
+       <height>20</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="idModifComboPl">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>360</y>
+       <width>81</width>
+       <height>21</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="ajouterPl">
+     <property name="geometry">
+      <rect>
+       <x>380</x>
+       <y>300</y>
+       <width>91</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Ajouter</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="rechComboPl">
+     <property name="geometry">
+      <rect>
+       <x>520</x>
+       <y>20</y>
+       <width>91</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>Identifiant</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Etat</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>ID Parking</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QTableView" name="tabPlace">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>70</y>
+       <width>621</width>
+       <height>211</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="supprPl">
+     <property name="geometry">
+      <rect>
+       <x>510</x>
+       <y>350</y>
+       <width>101</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Supprimer</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="modifPl">
+     <property name="geometry">
+      <rect>
+       <x>380</x>
+       <y>360</y>
+       <width>91</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Modifier</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="rafraichirPl">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>20</y>
+       <width>61</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Actualiser</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="idparkingModifComboPl">
+     <property name="geometry">
+      <rect>
+       <x>280</x>
+       <y>360</y>
+       <width>91</width>
+       <height>21</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="idparkingComboPl">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>300</y>
+       <width>131</width>
+       <height>21</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="Line" name="line_26">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>10</y>
+       <width>241</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="Line" name="line_27">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>290</y>
+       <width>481</width>
+       <height>101</height>
+      </rect>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="Line" name="line_28">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>340</y>
+       <width>481</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="Line" name="line_29">
+     <property name="geometry">
+      <rect>
+       <x>490</x>
+       <y>290</y>
+       <width>141</width>
+       <height>101</height>
+      </rect>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <zorder>line_29</zorder>
+    <zorder>line_28</zorder>
+    <zorder>line_27</zorder>
+    <zorder>line_42</zorder>
+    <zorder>line_26</zorder>
+    <zorder>idSupprComboPl</zorder>
+    <zorder>idModifPl</zorder>
+    <zorder>trierParPl</zorder>
+    <zorder>etatModifComboPl</zorder>
+    <zorder>triComboPl</zorder>
+    <zorder>rechercherPl</zorder>
+    <zorder>etatComboPl</zorder>
+    <zorder>idPl</zorder>
+    <zorder>rechTextPl</zorder>
+    <zorder>idModifComboPl</zorder>
+    <zorder>ajouterPl</zorder>
+    <zorder>rechComboPl</zorder>
+    <zorder>tabPlace</zorder>
+    <zorder>supprPl</zorder>
+    <zorder>modifPl</zorder>
+    <zorder>rafraichirPl</zorder>
+    <zorder>idparkingModifComboPl</zorder>
+    <zorder>idparkingComboPl</zorder>
+   </widget>
+   <widget class="QWidget" name="tab_2">
+    <attribute name="title">
+     <string>Statistiques</string>
+    </attribute>
+    <widget class="QChartView" name="statBox">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>641</width>
+       <height>381</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="statCombo">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>171</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>Parkings les plus occupés</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Parkings les moins occupés</string>
+      </property>
+     </item>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="tab_3">
+    <attribute name="title">
+     <string>Alerter une panne</string>
+    </attribute>
+    <widget class="QPushButton" name="envoyer">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>140</y>
+       <width>301</width>
+       <height>121</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Alerter</string>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QComboBox" name="langueCombo">
+   <property name="geometry">
+    <rect>
+     <x>540</x>
+     <y>10</y>
+     <width>101</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>Français</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Anglais</string>
+    </property>
+   </item>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QChartView</class>
+   <extends>QGraphicsView</extends>
+   <header>QtCharts</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

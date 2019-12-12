@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/ma">
+        <file>myappico.png</file>
+        <file>buuus.png</file>
+        <file>buus.png</file>
+    </qresource>
+</RCC>
